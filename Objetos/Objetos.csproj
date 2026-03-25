@@ -1,0 +1,256 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{EC5E188E-1B93-44DE-AEB9-2061B2B65110}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Objetos</RootNamespace>
+    <AssemblyName>Objetos</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="OAbono.cs" />
+    <Compile Include="OActivo.cs" />
+    <Compile Include="OAlmacen.cs" />
+    <Compile Include="OAperturaCaja.cs" />
+    <Compile Include="OAperturaMes.cs" />
+    <Compile Include="OAsistencia.cs" />
+    <Compile Include="OBanco.cs" />
+    <Compile Include="OCaja.cs" />
+    <Compile Include="OCajaUsuario.cs" />
+    <Compile Include="OCargo.cs" />
+    <Compile Include="OCierreCaja.cs" />
+    <Compile Include="OClienteUsuario.cs" />
+    <Compile Include="OComision.cs" />
+    <Compile Include="OComparacionVentas.cs" />
+    <Compile Include="OCompraPorFecha.cs" />
+    <Compile Include="OCondicion_Comercial.cs" />
+    <Compile Include="OConfiguracion.cs" />
+    <Compile Include="OConstantes.cs" />
+    <Compile Include="OCuentasXCobrarPagar.cs" />
+    <Compile Include="ODepositoBanco.cs" />
+    <Compile Include="ODepreciacionActivo.cs" />
+    <Compile Include="ODescuento_Promocional.cs" />
+    <Compile Include="ODetalleAsistencia.cs" />
+    <Compile Include="ODetalleGasto.cs" />
+    <Compile Include="ODetallePago.cs" />
+    <Compile Include="ODetalleVentaCompleto.cs" />
+    <Compile Include="ODoctoTipoPago.cs" />
+    <Compile Include="ODosificacion.cs" />
+    <Compile Include="OInicioCaja.cs" />
+    <Compile Include="OInventario.cs" />
+    <Compile Include="OLibroMayor.cs" />
+    <Compile Include="OMarcaciones.cs" />
+    <Compile Include="ODetalleCierreCaja.cs" />
+    <Compile Include="OMovimientoCheque.cs" />
+    <Compile Include="OMovVentasXProd.cs" />
+    <Compile Include="OPagoCheque.cs" />
+    <Compile Include="OCliente.cs" />
+    <Compile Include="OCompraProd.cs" />
+    <Compile Include="OConexionGlobal.cs" />
+    <Compile Include="OConformidad.cs" />
+    <Compile Include="OContacto.cs" />
+    <Compile Include="OControlTransporte.cs" />
+    <Compile Include="OCotizacion.cs" />
+    <Compile Include="OCuentaCont.cs" />
+    <Compile Include="ODetalleAbono.cs" />
+    <Compile Include="ODetalleCompraProd.cs" />
+    <Compile Include="ODetalleConformidad.cs" />
+    <Compile Include="ODetalleCotizacion.cs" />
+    <Compile Include="ODetalleIngSalProducto.cs" />
+    <Compile Include="ODetallePersonal.cs" />
+    <Compile Include="ODetallePlanillaSueldo.cs" />
+    <Compile Include="ODetalleProyecciones.cs" />
+    <Compile Include="ODetalleRolUsuario.cs" />
+    <Compile Include="ODetalleTraspaso.cs" />
+    <Compile Include="ODetalleTurno.cs" />
+    <Compile Include="ODetalleVenta.cs" />
+    <Compile Include="ODocumento.cs" />
+    <Compile Include="OPagoEfectivo.cs" />
+    <Compile Include="OEmpresa.cs" />
+    <Compile Include="OEntregas.cs" />
+    <Compile Include="OFactura.cs" />
+    <Compile Include="OFeriados.cs" />
+    <Compile Include="OGastoPersonal.cs" />
+    <Compile Include="OGastosIngresos.cs" />
+    <Compile Include="OGastoTipoActivo.cs" />
+    <Compile Include="OGestion.cs" />
+    <Compile Include="OGrupoActivos.cs" />
+    <Compile Include="OHorario.cs" />
+    <Compile Include="OImagen.cs" />
+    <Compile Include="OIngSalProducto.cs" />
+    <Compile Include="OInmode.cs" />
+    <Compile Include="ONombreFactura.cs" />
+    <Compile Include="OPago.cs" />
+    <Compile Include="OPais.cs" />
+    <Compile Include="OPermisoVacacion.cs" />
+    <Compile Include="OPersonal.cs" />
+    <Compile Include="OPlanillaSueldo.cs" />
+    <Compile Include="OPrecioProducto.cs" />
+    <Compile Include="OPrestamoProv.cs" />
+    <Compile Include="OProducto.cs" />
+    <Compile Include="OProveedor.cs" />
+    <Compile Include="OProyecciones.cs" />
+    <Compile Include="ORecibo.cs" />
+    <Compile Include="OReciboGastoActivo.cs" />
+    <Compile Include="OReciboIngEgr.cs" />
+    <Compile Include="ORedesSociales.cs" />
+    <Compile Include="OReferenciaPersonal.cs" />
+    <Compile Include="ORegistroAsistencia.cs" />
+    <Compile Include="ORestriccionUsuario.cs" />
+    <Compile Include="ORol_Usuario.cs" />
+    <Compile Include="OSucursal.cs" />
+    <Compile Include="ORubroSubRubro.cs" />
+    <Compile Include="OTipo.cs" />
+    <Compile Include="OTipoActivo.cs" />
+    <Compile Include="OTipoCambio.cs" />
+    <Compile Include="OTipoIngSalProd.cs" />
+    <Compile Include="OTipoUsuario.cs" />
+    <Compile Include="OTipoVenta.cs" />
+    <Compile Include="OTransitoDetallado.cs" />
+    <Compile Include="OTraspaso.cs" />
+    <Compile Include="OTraspasoCaja.cs" />
+    <Compile Include="OTurnoPersonal.cs" />
+    <Compile Include="OTurnos.cs" />
+    <Compile Include="OUbicacion.cs" />
+    <Compile Include="OUbicacionCli.cs" />
+    <Compile Include="OUsuario.cs" />
+    <Compile Include="OValorConformidad.cs" />
+    <Compile Include="OVenta.cs" />
+    <Compile Include="OVentasPorFecha.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="OTipoPermiso.cs" />
+    <Compile Include="Reportes\Ejemplo.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Ejemplo.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\ListaPer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ListaPer.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\ListaPersonalAnul.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ListaPersonalAnul.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\ListaProd.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ListaProd.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\ListaProv.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ListaProv.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\RepCrystalBoletaPago.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RepCrystalBoletaPago.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\RepCrystalSaldoInvFisico.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RepCrystalSaldoInvFisico.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\RepListaCli.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RepListaCli.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Reportes\Ejemplo.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Ejemplo.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\ListaPer.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ListaPer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\ListaPersonalAnul.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ListaPersonalAnul.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\ListaProd.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ListaProd.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\ListaProv.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ListaProv.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\RepCrystalBoletaPago.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RepCrystalBoletaPago.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\RepCrystalSaldoInvFisico.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RepCrystalSaldoInvFisico.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\RepListaCli.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RepListaCli.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\DataSources\OProducto.datasource" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
