@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="DataCrocodylus">
+  <DataContextMoniker Name="/DataCrocodylusDataContext" />
+  <nestedChildShapes>
+    <classShape Id="121c6abd-db07-459d-9acb-54aca84e53ef" absoluteBounds="0.5, 0.875, 2, 3.1170068359375">
+      <DataClassMoniker Name="/DataCrocodylusDataContext/Proveedor" />
+      <nestedChildShapes>
+        <elementListCompartment Id="19fc3741-c07f-4159-8d7b-a884e1150ce2" absoluteBounds="0.515, 1.335, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="70e86518-a43f-464c-b72c-4ca0af46a3ad" absoluteBounds="3.5, 1.125, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/DataCrocodylusDataContext/Tipo_Producto" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3019d622-f5fb-4a98-a24e-604a1b36d0d1" absoluteBounds="3.5149999999999997, 1.585, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="15f8697e-104e-4560-a78c-baf56f83dab9" absoluteBounds="5.875, 0.5, 2, 4.8477197265625">
+      <DataClassMoniker Name="/DataCrocodylusDataContext/Producto" />
+      <nestedChildShapes>
+        <elementListCompartment Id="14fdf721-78bb-4b44-b126-4a3bba059f66" absoluteBounds="5.89, 0.96, 1.9700000000000002, 4.2877197265625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="835c8033-d56b-44b1-a551-6ec48f81b504" absoluteBounds="5.875, 5.625, 2, 1.9631982421875">
+      <DataClassMoniker Name="/DataCrocodylusDataContext/Almacen" />
+      <nestedChildShapes>
+        <elementListCompartment Id="fd457edf-80ac-4625-9c94-ecb4465fee79" absoluteBounds="5.89, 6.085, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="059f6f37-7bc2-406b-b740-01b21bd56d69" absoluteBounds="3.125, 3.625, 2, 3.3093082682291666">
+      <DataClassMoniker Name="/DataCrocodylusDataContext/KardexProd" />
+      <nestedChildShapes>
+        <elementListCompartment Id="897303fb-db74-4d12-aea2-8aef346b5aa9" absoluteBounds="3.14, 4.085, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.875 : 6.27965413411458); (5.125 : 6.27965413411458)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DataCrocodylusDataContext/Almacen/Almacen_KardexProd" />
+      <nodes>
+        <classShapeMoniker Id="835c8033-d56b-44b1-a551-6ec48f81b504" />
+        <classShapeMoniker Id="059f6f37-7bc2-406b-b740-01b21bd56d69" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.875 : 4.48635986328125); (5.125 : 4.48635986328125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DataCrocodylusDataContext/Producto/Producto_KardexProd" />
+      <nodes>
+        <classShapeMoniker Id="15f8697e-104e-4560-a78c-baf56f83dab9" />
+        <classShapeMoniker Id="059f6f37-7bc2-406b-b740-01b21bd56d69" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="93d167e8-f329-4b64-b2cd-772cfeda9a76" absoluteBounds="0.625, 4.375, 2, 2.9247054036458331">
+      <DataClassMoniker Name="/DataCrocodylusDataContext/Cuenta_Contable" />
+      <nestedChildShapes>
+        <elementListCompartment Id="cf5d973a-c2bf-493e-aa2a-f60faf7fe2e2" absoluteBounds="0.64000000000000012, 4.835, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{39914871-2213-452A-B630-2D1131E1728F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Datos</RootNamespace>
+    <AssemblyName>Datos</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>f3e63463</NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Data.SQLite, Version=1.0.113.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Core.1.0.113.0\lib\net40\System.Data.SQLite.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppConfig.cs" />
+    <Compile Include="ConfigService.cs" />
+    <Compile Include="CrocodyliusDataSet.cs">
+      <DependentUpon>CrocodyliusDataSet.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CrocodyliusDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrocodyliusDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DAbono.cs" />
+    <Compile Include="DActivo.cs" />
+    <Compile Include="DAlmacen.cs" />
+    <Compile Include="DAperturaCaja.cs" />
+    <Compile Include="DAperturaMes.cs" />
+    <Compile Include="DAsistencia.cs" />
+    <Compile Include="DBackup.cs" />
+    <Compile Include="DBalanceGeneral.cs" />
+    <Compile Include="DbContext.cs" />
+    <Compile Include="DCajaUsuario.cs" />
+    <Compile Include="DCierreCaja.cs" />
+    <Compile Include="DClienteUsuario.cs" />
+    <Compile Include="DComision.cs" />
+    <Compile Include="DComparacionVentas.cs" />
+    <Compile Include="DCondicion_Comercial.cs" />
+    <Compile Include="DConstantes.cs" />
+    <Compile Include="DCuentasXCobrarPagar.cs" />
+    <Compile Include="DDepreciacionActivo.cs" />
+    <Compile Include="DDescuento_Promocional.cs" />
+    <Compile Include="DDetalleAsistencia.cs" />
+    <Compile Include="DDetalleTurno.cs" />
+    <Compile Include="DDosificacion.cs" />
+    <Compile Include="DInicioCaja.cs" />
+    <Compile Include="DInventario.cs" />
+    <Compile Include="DLibroDiario.cs" />
+    <Compile Include="DLibroMayor.cs" />
+    <Compile Include="DListarPersonalizado.cs" />
+    <Compile Include="DMarcaciones.cs" />
+    <Compile Include="DDetalleCierreCaja.cs" />
+    <Compile Include="DMovimientoCheque.cs" />
+    <Compile Include="DCompraProd.cs" />
+    <Compile Include="DContacto.cs" />
+    <Compile Include="DCotizacion.cs" />
+    <Compile Include="DDetalleAbono.cs" />
+    <Compile Include="DDetalleCompraProd.cs" />
+    <Compile Include="DDetalleConformidad.cs" />
+    <Compile Include="DDetalleCotizacion.cs" />
+    <Compile Include="DDetalleGasto.cs" />
+    <Compile Include="DDetalleIngSalProducto.cs" />
+    <Compile Include="DDetallePersonal.cs" />
+    <Compile Include="DDetalleProyeccion.cs" />
+    <Compile Include="DDetalleVenta.cs" />
+    <Compile Include="DDocumento.cs" />
+    <Compile Include="DFactura.cs" />
+    <Compile Include="DFeriados.cs" />
+    <Compile Include="DAsiento.cs" />
+    <Compile Include="DataCrocodylus.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataCrocodylus.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="DBanco.cs" />
+    <Compile Include="DCaja.cs" />
+    <Compile Include="DCargos.cs" />
+    <Compile Include="DCliente.cs" />
+    <Compile Include="DConformidad.cs" />
+    <Compile Include="DControlTransporte.cs" />
+    <Compile Include="DCuentaCont.cs" />
+    <Compile Include="DDetalleTraspaso.cs" />
+    <Compile Include="DGastoPersonal.cs" />
+    <Compile Include="DCuenta_Ingreso_Egreso.cs" />
+    <Compile Include="DGastoTipoActivo.cs" />
+    <Compile Include="DGestion.cs" />
+    <Compile Include="DGrupoActivosFijos.cs" />
+    <Compile Include="DHorarios.cs" />
+    <Compile Include="DIngSalProducto.cs" />
+    <Compile Include="DInmode.cs" />
+    <Compile Include="DMenu.cs" />
+    <Compile Include="DMovVentasXProd.cs" />
+    <Compile Include="DNombreFactura.cs" />
+    <Compile Include="DPago.cs" />
+    <Compile Include="DPermisoVacacion.cs" />
+    <Compile Include="DPersonal.cs" />
+    <Compile Include="DPlanillaSueldo.cs" />
+    <Compile Include="DPrestamoProv.cs" />
+    <Compile Include="DProducto.cs" />
+    <Compile Include="DProveedor.cs" />
+    <Compile Include="DProyecciones.cs" />
+    <Compile Include="DReciboGastoActivos.cs" />
+    <Compile Include="DReciboIngEgr.cs" />
+    <Compile Include="DRedesSociales.cs" />
+    <Compile Include="DReferenciaPersonal.cs" />
+    <Compile Include="DRegistroAsistencia.cs" />
+    <Compile Include="DRol_Usuario.cs" />
+    <Compile Include="DSaldoInventarioFisValor.cs" />
+    <Compile Include="DSucursal.cs" />
+    <Compile Include="DRubroSubRubro.cs" />
+    <Compile Include="DEmpresa.cs" />
+    <Compile Include="DTipo.cs" />
+    <Compile Include="DTipoActivo.cs" />
+    <Compile Include="DTipoCambio.cs" />
+    <Compile Include="DTipoPermiso.cs" />
+    <Compile Include="DTipoUsuario.cs" />
+    <Compile Include="DTransitoDetallado.cs" />
+    <Compile Include="DTraspaso.cs" />
+    <Compile Include="DTraspasoCaja.cs" />
+    <Compile Include="DTurno.cs" />
+    <Compile Include="DTurnoPersonal.cs" />
+    <Compile Include="DUbicacion.cs" />
+    <Compile Include="DUsuario.cs" />
+    <Compile Include="DVenta.cs" />
+    <Compile Include="DDepositoBanco.cs" />
+    <Compile Include="Manejador.cs" />
+    <Compile Include="Parametros.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CrocodyliusDataSet.xsc">
+      <DependentUpon>CrocodyliusDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="CrocodyliusDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CrocodyliusDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CrocodyliusDataSet.xss">
+      <DependentUpon>CrocodyliusDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DataCrocodylus.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>DataCrocodylus.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DataCrocodylus.dbml.layout">
+      <DependentUpon>DataCrocodylus.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Objetos\Objetos.csproj">
+      <Project>{EC5E188E-1B93-44DE-AEB9-2061B2B65110}</Project>
+      <Name>Objetos</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\System.Data.SQLite.Core.1.0.113.0\build\net40\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.113.0\build\net40\System.Data.SQLite.Core.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Habilite la restauración del paquete NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\System.Data.SQLite.Core.1.0.113.0\build\net40\System.Data.SQLite.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Data.SQLite.Core.1.0.113.0\build\net40\System.Data.SQLite.Core.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
