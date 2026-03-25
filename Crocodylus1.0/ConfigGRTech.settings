@@ -1,0 +1,21 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="GRTechnology1._0" GeneratedClassName="ConfigGRTech">
+  <Profiles />
+  <Settings>
+    <Setting Name="Formato_Impr_Nota_Venta" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">MEDIA CARTA</Value>
+    </Setting>
+    <Setting Name="Impr_Aut_Nota_Venta" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Ubicación_Sistem_Actualizador" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">E:\Proyectos\ACTUALIZADOR\Actualizador\Actualizador\bin\Debug\Actualizador.exe</Value>
+    </Setting>
+    <Setting Name="Display_COM" Type="System.String" Scope="Application">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Display_BaudRate" Type="System.String" Scope="Application">
+      <Value Profile="(Default)" />
+    </Setting>
+  </Settings>
+</SettingsFile>
