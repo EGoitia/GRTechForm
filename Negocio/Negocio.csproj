@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{79922532-F7E6-4A81-8D98-AFE7DE049A17}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Negocio</RootNamespace>
+    <AssemblyName>Negocio</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="NActivos.cs" />
+    <Compile Include="NAlmacen.cs" />
+    <Compile Include="NAperturaMes.cs" />
+    <Compile Include="NAsiento.cs" />
+    <Compile Include="NAsistencia.cs" />
+    <Compile Include="NBackup.cs" />
+    <Compile Include="NBalanceGeneral.cs" />
+    <Compile Include="NBanco.cs" />
+    <Compile Include="NCajaUsuario.cs" />
+    <Compile Include="NCargo.cs" />
+    <Compile Include="NClienteUsuario.cs" />
+    <Compile Include="NComision.cs" />
+    <Compile Include="NComparacionVenta.cs" />
+    <Compile Include="NCuentaXCobrarPagar.cs" />
+    <Compile Include="NDepositoBanco.cs" />
+    <Compile Include="NDepreciacionActivo.cs" />
+    <Compile Include="NDetalleAsistencia.cs" />
+    <Compile Include="NDetalleTurno.cs" />
+    <Compile Include="NLibroDiario.cs" />
+    <Compile Include="NLibroMayor.cs" />
+    <Compile Include="NListarPersonalizado.cs" />
+    <Compile Include="NMarcaciones.cs" />
+    <Compile Include="NDetalleCierreCaja.cs" />
+    <Compile Include="NMovimientoCheque.cs" />
+    <Compile Include="NCliente.cs" />
+    <Compile Include="NCompraProd.cs" />
+    <Compile Include="NConformidad.cs" />
+    <Compile Include="NContacto.cs" />
+    <Compile Include="NControlTransporte.cs" />
+    <Compile Include="NCuentaCont.cs" />
+    <Compile Include="NDetalleAbono.cs" />
+    <Compile Include="NDetalleCompraProd.cs" />
+    <Compile Include="NDetalleConformidad.cs" />
+    <Compile Include="NDetalleCotizacion.cs" />
+    <Compile Include="NDetalleGasto.cs" />
+    <Compile Include="NDetalleIngSalProducto.cs" />
+    <Compile Include="NDetallePersonal.cs" />
+    <Compile Include="NDetalleProyeccion.cs" />
+    <Compile Include="NDetalleTraspaso.cs" />
+    <Compile Include="NDetalleVenta.cs" />
+    <Compile Include="NDocumento.cs" />
+    <Compile Include="NFeriados.cs" />
+    <Compile Include="NGastoPersonal.cs" />
+    <Compile Include="NGastoTipoActivo.cs" />
+    <Compile Include="NGestion.cs" />
+    <Compile Include="NGrupoActivosFijos.cs" />
+    <Compile Include="NHorario.cs" />
+    <Compile Include="NIngSalProducto.cs" />
+    <Compile Include="NInmode.cs" />
+    <Compile Include="NMovVentasXProd.cs" />
+    <Compile Include="NNombreFactura.cs" />
+    <Compile Include="NPago.cs" />
+    <Compile Include="NPermisoVacacion.cs" />
+    <Compile Include="NPersonal.cs" />
+    <Compile Include="NPlanillaSueldo.cs" />
+    <Compile Include="NPrestamoProv.cs" />
+    <Compile Include="NProveedor.cs" />
+    <Compile Include="NReciboGastoActivos.cs" />
+    <Compile Include="NReciboIngEgr.cs" />
+    <Compile Include="NRedesSociales.cs" />
+    <Compile Include="NReferenciaPersonal.cs" />
+    <Compile Include="NRegistroAsistencia.cs" />
+    <Compile Include="NSucursal.cs" />
+    <Compile Include="NRubroSubRubro.cs" />
+    <Compile Include="NTipo.cs" />
+    <Compile Include="NTipoActivo.cs" />
+    <Compile Include="NTipoPermiso.cs" />
+    <Compile Include="NTipoUsuario.cs" />
+    <Compile Include="NTransitoDetallado.cs" />
+    <Compile Include="NTraspaso.cs" />
+    <Compile Include="NTraspasoCaja.cs" />
+    <Compile Include="NTurno.cs" />
+    <Compile Include="NTurnoPersonal.cs" />
+    <Compile Include="NUbicacion.cs" />
+    <Compile Include="NVenta.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Datos\Datos.csproj">
+      <Project>{39914871-2213-452A-B630-2D1131E1728F}</Project>
+      <Name>Datos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Objetos\Objetos.csproj">
+      <Project>{EC5E188E-1B93-44DE-AEB9-2061B2B65110}</Project>
+      <Name>Objetos</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
