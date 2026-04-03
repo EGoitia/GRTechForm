@@ -230,7 +230,7 @@ namespace Objetos
                 _logoEmp = value;
             }
         }
-
+        
         public static DataTable Detalle_Rol
         {
             get

@@ -30,7 +30,7 @@ namespace Datos
                     miCmd.Parameters.AddWithValue("@Cuenta_Ingreso_EgresoID", cueningregre.Cuenta_Ingreso_EgresoID);
 
                 miCmd.Parameters.AddWithValue("@TipoIngresoEgreso", cueningregre.TipoIngresoEgreso);
-                miCmd.Parameters.AddWithValue("@CuentaContID", cueningregre.CodCuenta);
+                miCmd.Parameters.AddWithValue("@TipoCuentaID", cueningregre.TipoCuentaID);
                 miCmd.Parameters.AddWithValue("@Nombre", cueningregre.Nombre);
                 miCmd.Parameters.AddWithValue("@Descripcion", cueningregre.Descripcion);
                 //Inmode

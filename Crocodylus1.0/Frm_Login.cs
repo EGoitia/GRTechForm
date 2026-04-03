@@ -5,6 +5,7 @@ using Objetos;
 using Datos;
 using System.Data;
 using System.Threading;
+using System.Management;
 
 namespace GRTechnology1._0
 {
@@ -60,7 +61,7 @@ namespace GRTechnology1._0
                 OConexionGlobal.Ciudad = DRSuc[0]["Ciudad"].ToString();
                 OConexionGlobal.Direccion = DRSuc[0]["Direccion"].ToString();
                 OConexionGlobal.Telf = DRSuc[0]["Telf"].ToString();
-               
+                              
                 Frm_Principal prin = new Frm_Principal();
                 prin.Show();
                 this.Hide();
@@ -71,7 +72,7 @@ namespace GRTechnology1._0
                 Application.Exit();
             }
         }
-
+          
         private bool Verificar()
         {
             if (string.IsNullOrWhiteSpace(txtNombre.Text))

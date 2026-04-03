@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
+using System.Drawing;
 using System.Management;
 using System.Windows.Forms;
 
@@ -19,6 +20,8 @@ namespace GRTechnology1._0
         private DataTable DTTipoEgreso;
         private DataTable DTCuentas;
         //private DataTable DTCajas;
+
+        TextBox txtActivo;
 
         IEnumerable<DataRow> DRCuentas = null;
 
@@ -355,6 +358,7 @@ namespace GRTechnology1._0
         private void Frm_Ingresos_EgresosPOS_Load(object sender, EventArgs e)
         {
             panelLeft.Width = 475;
+            txtActivo = txtConcepto;
             FrmRep = new Frm_Reporte();
 
             ListarDatos();
@@ -400,15 +404,39 @@ namespace GRTechnology1._0
             if (dialogo == DialogResult.Yes)
                 this.Close();
         }
-
-        private void btnConfig_Click(object sender, EventArgs e)
+        
+        private void txtConcepto_MouseClick(object sender, MouseEventArgs e)
         {
-            //Process.Start("osk.exe");
-            //Process.Start(new ProcessStartInfo
-            //{
-            //    FileName = "osk.exe",
-            //    UseShellExecute = true
-            //});
+            txtActivo.BackColor = Color.White;
+            txtActivo = txtConcepto;
+            txtActivo.BackColor = Color.DodgerBlue;
+
+            Process.Start(new ProcessStartInfo
+            {
+                FileName = @"C:\Program Files\Common Files\Microsoft Shared\ink\TabTip.exe",
+                UseShellExecute = true
+            });
+        }
+
+        private void txtDetalle_MouseClick(object sender, MouseEventArgs e)
+        {
+            txtActivo.BackColor = Color.White;
+            txtActivo = txtDetalle;
+            txtActivo.BackColor = Color.DodgerBlue;
+
+            Process.Start(new ProcessStartInfo
+            {
+                FileName = @"C:\Program Files\Common Files\Microsoft Shared\ink\TabTip.exe",
+                UseShellExecute = true
+            });
+        }
+
+        private void txtMontoBs_MouseClick(object sender, MouseEventArgs e)
+        {
+            txtActivo.BackColor = Color.White;
+            txtActivo = txtMontoBs;
+            txtActivo.BackColor = Color.DodgerBlue;
+
             Process.Start(new ProcessStartInfo
             {
                 FileName = @"C:\Program Files\Common Files\Microsoft Shared\ink\TabTip.exe",

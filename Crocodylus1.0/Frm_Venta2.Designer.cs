@@ -38,12 +38,12 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.gbxBotones = new System.Windows.Forms.GroupBox();
             this.btnConfig = new System.Windows.Forms.Button();
+            this.cmbTipoVenta = new System.Windows.Forms.ComboBox();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAct = new System.Windows.Forms.Button();
             this.gbxPedido = new System.Windows.Forms.GroupBox();
             this.txtClienteID = new System.Windows.Forms.TextBox();
-            this.cmbTipoVenta = new System.Windows.Forms.ComboBox();
             this.btnBusqCli = new System.Windows.Forms.Button();
             this.PanelVendedores = new System.Windows.Forms.FlowLayoutPanel();
             this.txtTotal = new System.Windows.Forms.TextBox();
@@ -111,13 +111,27 @@
             this.btnConfig.BackColor = System.Drawing.SystemColors.Window;
             this.btnConfig.BackgroundImage = global::GRTechnology1._0.Properties.Resources.ajustes_con_engranajes;
             this.btnConfig.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnConfig.Location = new System.Drawing.Point(8, 14);
+            this.btnConfig.Location = new System.Drawing.Point(8, 21);
             this.btnConfig.Name = "btnConfig";
-            this.btnConfig.Size = new System.Drawing.Size(64, 60);
+            this.btnConfig.Size = new System.Drawing.Size(46, 45);
             this.btnConfig.TabIndex = 9;
             this.btnConfig.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnConfig.UseVisualStyleBackColor = false;
             this.btnConfig.Click += new System.EventHandler(this.btnConfig_Click);
+            // 
+            // cmbTipoVenta
+            // 
+            this.cmbTipoVenta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTipoVenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbTipoVenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbTipoVenta.FormattingEnabled = true;
+            this.cmbTipoVenta.Items.AddRange(new object[] {
+            "CONTADO",
+            "CRÉDITO"});
+            this.cmbTipoVenta.Location = new System.Drawing.Point(59, 21);
+            this.cmbTipoVenta.Name = "cmbTipoVenta";
+            this.cmbTipoVenta.Size = new System.Drawing.Size(228, 45);
+            this.cmbTipoVenta.TabIndex = 20;
             // 
             // btnGuardar
             // 
@@ -190,20 +204,6 @@
             this.txtClienteID.Text = "1";
             this.txtClienteID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtClienteID.Visible = false;
-            // 
-            // cmbTipoVenta
-            // 
-            this.cmbTipoVenta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbTipoVenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmbTipoVenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbTipoVenta.FormattingEnabled = true;
-            this.cmbTipoVenta.Items.AddRange(new object[] {
-            "CONTADO",
-            "CRÉDITO"});
-            this.cmbTipoVenta.Location = new System.Drawing.Point(78, 21);
-            this.cmbTipoVenta.Name = "cmbTipoVenta";
-            this.cmbTipoVenta.Size = new System.Drawing.Size(258, 45);
-            this.cmbTipoVenta.TabIndex = 20;
             // 
             // btnBusqCli
             // 

@@ -13,7 +13,7 @@ namespace GRTechnology1._0
         OCuenta_Ingresos_Egresos ocuenta = new OCuenta_Ingresos_Egresos();
         DataTable DTCuenta = null;
         IEnumerable<DataRow> DRCuenta = null;
-        
+
         public Frm_Cuenta_Ingreso_Egreso()
         {
             InitializeComponent();
@@ -42,7 +42,7 @@ namespace GRTechnology1._0
 
         #region Conexion Caja de Datos
 
-        private void ListarTipo()
+        private void ListarIngrEgre()
         {
             DataTable DTTipo = new DataTable();
             DTTipo.Columns.Add("TipoID");
@@ -64,10 +64,26 @@ namespace GRTechnology1._0
             DRTipo["NombreTipo"] = "EGRESO";
             DTTipo.Rows.Add(DRTipo);
 
-            cboTipo.DataSource = DTTipo;
-            cboTipo.DisplayMember = "NombreTipo";
-            cboTipo.ValueMember = "TipoID";
-            cboTipo.SelectedValue = "";
+            cboTipoIngEgr.DataSource = DTTipo;
+            cboTipoIngEgr.DisplayMember = "NombreTipo";
+            cboTipoIngEgr.ValueMember = "TipoID";
+            cboTipoIngEgr.SelectedValue = "";
+        }
+
+        private void ListarTipo()
+        {
+            try
+            {
+                DataTable DTTipo = DListarPersonalizado.ConsultarDT("SELECT TipoID, NomTipo FROM Tipo WHERE Tupla='Egreso'");
+
+                cboTipo.DataSource = DTTipo;
+                cboTipo.DisplayMember = "NomTipo";
+                cboTipo.ValueMember = "TipoID";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public override void Listar(bool Local)
@@ -110,7 +126,8 @@ namespace GRTechnology1._0
 
                 ocuenta.Nombre = txtNombre.Text.Trim();
                 ocuenta.Descripcion = txtDescripcion.Text.Trim();
-                ocuenta.TipoIngresoEgreso = cboTipo.SelectedValue.ToString();
+                ocuenta.TipoCuentaID = Convert.ToInt32(cboTipo.SelectedValue);
+                ocuenta.TipoIngresoEgreso = cboTipoIngEgr.SelectedValue.ToString();
 
                 int resp = DCuenta_Ingreso_Egreso.DInsertModifCuentaIngrEgre(ocuenta, OInmode.DTInmode(CodInmode, Opcion, detinmode));
                 if (resp > 0)
@@ -142,7 +159,10 @@ namespace GRTechnology1._0
                 int cont = 0;
                 foreach (DataRow item in dringregre)
                 {
-                    dgvDatos.Rows.Add(item.Field<int>("Cuenta_Ingreso_EgresoID"), item.Field<string>("Nombre"), item.Field<string>("TipoIngresoEgreso"));
+                    dgvDatos.Rows.Add(item.Field<int>("Cuenta_Ingreso_EgresoID"), 
+                        item.Field<string>("Nombre"),
+                        item.Field<string>("NomTipo"),
+                        item.Field<string>("TipoIngresoEgreso"));
 
                     if (!item.Field<bool>("Estado"))
                         dgvDatos.Rows[cont].DefaultCellStyle.BackColor = System.Drawing.Color.Red;
@@ -168,7 +188,8 @@ namespace GRTechnology1._0
 
                     txtNombre.Text = item.Field<string>("Nombre");
                     txtDescripcion.Text = item.Field<string>("Descripcion");
-                    cboTipo.SelectedValue = item.Field<string>("TipoIngresoEgreso");
+                    cboTipo.SelectedValue = item.Field<int>("TipoCuentaID").ToString();
+                    cboTipoIngEgr.SelectedValue = item.Field<string>("TipoIngresoEgreso");
                 }
             }
             catch (Exception)
@@ -203,7 +224,8 @@ namespace GRTechnology1._0
             txtCodigo.Clear();
             txtDescripcion.Clear();
             txtNombre.Clear();
-            cboTipo.SelectedValue = ""; 
+            //cboTipo.SelectedValue = "";
+            cboTipoIngEgr.SelectedValue = "";
         }
 
         public override void Cancelar()
@@ -221,6 +243,11 @@ namespace GRTechnology1._0
                 txtNombre.Focus();
                 throw new Exception("EL CAMPO NOMBRE NO PUEDE ESTAR VACÍO");
             }
+            else if (cboTipoIngEgr.SelectedValue.ToString() == "")
+            {
+                cboTipoIngEgr.Focus();
+                throw new Exception("SELECCIONE SI ES INGRESO O EGRESO");
+            }
             else if (cboTipo.SelectedValue.ToString() == "")
             {
                 cboTipo.Focus();
@@ -236,10 +263,11 @@ namespace GRTechnology1._0
         #endregion
 
         #region Eventos Formulario
-        
+
         private void Frm_Cuenta_Ingreso_Egreso_Load(object sender, EventArgs e)
         {
             HabilitarCont();
+            ListarIngrEgre();
             ListarTipo();
             Listar(false);
         }

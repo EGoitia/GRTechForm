@@ -30,7 +30,6 @@
         {
             this.panelPrin = new System.Windows.Forms.Panel();
             this.panelEgreso = new System.Windows.Forms.Panel();
-            this.btnConfig = new System.Windows.Forms.Button();
             this.txtMontoBs = new System.Windows.Forms.TextBox();
             this.cboTipoPago = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -72,7 +71,6 @@
             // 
             // panelEgreso
             // 
-            this.panelEgreso.Controls.Add(this.btnConfig);
             this.panelEgreso.Controls.Add(this.txtMontoBs);
             this.panelEgreso.Controls.Add(this.cboTipoPago);
             this.panelEgreso.Controls.Add(this.label4);
@@ -90,28 +88,17 @@
             this.panelEgreso.Size = new System.Drawing.Size(620, 399);
             this.panelEgreso.TabIndex = 1;
             // 
-            // btnConfig
-            // 
-            this.btnConfig.BackColor = System.Drawing.SystemColors.Window;
-            this.btnConfig.BackgroundImage = global::GRTechnology1._0.Properties.Resources.ajustes_con_engranajes;
-            this.btnConfig.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnConfig.Location = new System.Drawing.Point(538, 93);
-            this.btnConfig.Name = "btnConfig";
-            this.btnConfig.Size = new System.Drawing.Size(25, 22);
-            this.btnConfig.TabIndex = 9;
-            this.btnConfig.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnConfig.UseVisualStyleBackColor = false;
-            this.btnConfig.Click += new System.EventHandler(this.btnConfig_Click);
-            // 
             // txtMontoBs
             // 
-            this.txtMontoBs.Location = new System.Drawing.Point(72, 241);
+            this.txtMontoBs.Location = new System.Drawing.Point(72, 206);
             this.txtMontoBs.MaxLength = 10;
             this.txtMontoBs.Name = "txtMontoBs";
+            this.txtMontoBs.ReadOnly = true;
             this.txtMontoBs.Size = new System.Drawing.Size(74, 20);
             this.txtMontoBs.TabIndex = 51;
             this.txtMontoBs.Text = "0.00";
             this.txtMontoBs.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtMontoBs.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtMontoBs_MouseClick);
             // 
             // cboTipoPago
             // 
@@ -121,15 +108,15 @@
             this.cboTipoPago.Items.AddRange(new object[] {
             "INGRESO",
             "EGRESO"});
-            this.cboTipoPago.Location = new System.Drawing.Point(72, 209);
+            this.cboTipoPago.Location = new System.Drawing.Point(387, 171);
             this.cboTipoPago.Name = "cboTipoPago";
-            this.cboTipoPago.Size = new System.Drawing.Size(201, 21);
+            this.cboTipoPago.Size = new System.Drawing.Size(211, 21);
             this.cboTipoPago.TabIndex = 50;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(11, 214);
+            this.label4.Location = new System.Drawing.Point(326, 176);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(59, 13);
             this.label4.TabIndex = 49;
@@ -138,7 +125,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(11, 245);
+            this.label5.Location = new System.Drawing.Point(11, 210);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(58, 13);
             this.label5.TabIndex = 46;
@@ -153,7 +140,7 @@
             this.cboCaja.Location = new System.Drawing.Point(72, 173);
             this.cboCaja.Margin = new System.Windows.Forms.Padding(2);
             this.cboCaja.Name = "cboCaja";
-            this.cboCaja.Size = new System.Drawing.Size(201, 21);
+            this.cboCaja.Size = new System.Drawing.Size(233, 21);
             this.cboCaja.TabIndex = 44;
             // 
             // label2
@@ -228,19 +215,22 @@
             this.txtDetalle.Multiline = true;
             this.txtDetalle.Name = "txtDetalle";
             this.txtDetalle.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtDetalle.Size = new System.Drawing.Size(460, 44);
+            this.txtDetalle.Size = new System.Drawing.Size(526, 44);
             this.txtDetalle.TabIndex = 8;
+            this.txtDetalle.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtDetalle_MouseClick);
             // 
             // txtConcepto
             // 
             this.txtConcepto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtConcepto.BackColor = System.Drawing.Color.DodgerBlue;
             this.txtConcepto.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtConcepto.Location = new System.Drawing.Point(72, 95);
             this.txtConcepto.MaxLength = 50;
             this.txtConcepto.Name = "txtConcepto";
-            this.txtConcepto.Size = new System.Drawing.Size(460, 20);
+            this.txtConcepto.Size = new System.Drawing.Size(526, 20);
             this.txtConcepto.TabIndex = 6;
+            this.txtConcepto.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtConcepto_MouseClick);
             // 
             // label3
             // 
@@ -391,7 +381,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox gbxBotones;
-        private System.Windows.Forms.Button btnConfig;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnAct;

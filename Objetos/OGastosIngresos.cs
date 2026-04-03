@@ -24,18 +24,16 @@ namespace Objetos
                 if ((!string.IsNullOrEmpty(value)) || (!string.IsNullOrWhiteSpace(value)))
                     tipoIngresoEgreso = value;
                 else
-                    throw new Exception("Tiene que seleccionar el Tipo");
+                    throw new Exception("Tiene que seleccionar si es Ingreso o Egreso");
             }
         }
-        private string codCuenta = string.Empty;
+        private int tipoCuentaID = -1;
 
-        public string CodCuenta
+        public int TipoCuentaID
         {
-            get { return codCuenta; }
-            set { codCuenta = value; }
-        }
-
-        
+            get { return tipoCuentaID; }
+            set { tipoCuentaID = value; }
+        }              
         private string nombre = string.Empty;
 
         public string Nombre
