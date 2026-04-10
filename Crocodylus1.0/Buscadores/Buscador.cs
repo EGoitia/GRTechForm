@@ -77,9 +77,9 @@ namespace GRTechnology1._0.Buscadores
             {
                 string Consulta = string.Empty;
                 if (Opcion == "Cliente")
-                    Consulta = "SELECT ClienteID ID, NomClien Nombre, TipoClienteID TipoID, TipoClien Tipo FROM Vista_Clientes ORDER BY TipoClien, NomClien";
+                    Consulta = "SELECT ClienteID ID, NomClien Nombre, TipoClienteID TipoID, TipoClien Tipo FROM Vista_Clientes ORDER BY NomClien, TipoClien";
                 else if (Opcion == "Proveedor")
-                    Consulta = "SELECT ProveedorID ID, NomProv Nombre, TipoProvID TipoID, TipoProv Tipo FROM Vista_Proveedores ORDER BY TipoProv, NomProv";
+                    Consulta = "SELECT ProveedorID ID, NomProv Nombre, TipoProvID TipoID, TipoProv Tipo FROM Vista_Proveedores ORDER BY NomProv, TipoProv";
                 else if (Opcion == "Personal")
                     Consulta = "SELECT PersonalID ID, NomPer Nombre, CargoID TipoID, NomCargo Tipo FROM Vista_Personal WHERE Estado=1";
                 else if (Opcion == "EGRESO" || Opcion == "INGRESO")
@@ -169,6 +169,15 @@ namespace GRTechnology1._0.Buscadores
 
             if (chkTipo.Checked)
                 FiltrarTipo();
+        }
+        
+        private void btnSeleccionar_Click(object sender, EventArgs e)
+        {
+            if (dgvDatos.CurrentRow != null)
+            {
+                Seleccionado = true;
+                this.Close();
+            }
         }
 
         #endregion

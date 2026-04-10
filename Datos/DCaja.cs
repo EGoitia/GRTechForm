@@ -60,6 +60,35 @@ namespace Datos
             return result;
         }
 
+        public static void DInsertModifCajaLocal(DataTable dtCajas)
+        {
+            using (SqlConnection miCon = new SqlConnection(AppConfig.CadenaConexionLocal))
+            {
+                SqlCommand miCmd = new SqlCommand("InsertModifCaja_Local", miCon);
+                miCmd.CommandType = CommandType.StoredProcedure;
+                miCmd.Parameters.AddWithValue("@LstCaja", dtCajas);
+                
+                IDataParameter ReturnValue;
+                ReturnValue = miCmd.CreateParameter();
+                ReturnValue.Direction = ParameterDirection.ReturnValue;
+                miCmd.Parameters.Add(ReturnValue);
+
+                try
+                {
+                    miCon.Open();
+                    miCmd.ExecuteNonQuery();
+                }
+                catch (SqlException ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+                finally
+                {
+                    miCon.Close();
+                }
+            }
+        }
+
         public static bool DVerifCajasCerradas()
         {
             bool result;

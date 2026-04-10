@@ -127,6 +127,7 @@
             this.toolStripSeparatorCaja2 = new System.Windows.Forms.ToolStripSeparator();
             this.traspasoCajaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reciboDeCajaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ingresosEgresosPOSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.detalleGastosIngresosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
             this.movimientoBancoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -183,9 +184,21 @@
             this.BarraVersion = new System.Windows.Forms.ToolStripStatusLabel();
             this.btnActSistema = new System.Windows.Forms.Button();
             this.btnMenu = new System.Windows.Forms.Button();
-            this.ingresosEgresosPOSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.flowLayoutPanelMenuRapido = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.btnAbrirMenu = new System.Windows.Forms.Button();
+            this.ptbxVentaPOS = new System.Windows.Forms.PictureBox();
+            this.ptbxGastosPOS = new System.Windows.Forms.PictureBox();
+            this.ptbxListaVentasPOS = new System.Windows.Forms.PictureBox();
+            this.ptbxAbonosPOS = new System.Windows.Forms.PictureBox();
             this.toolStrip1.SuspendLayout();
             this.BarraUsu.SuspendLayout();
+            this.flowLayoutPanelMenuRapido.SuspendLayout();
+            this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbxVentaPOS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbxGastosPOS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbxListaVentasPOS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbxAbonosPOS)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -973,6 +986,13 @@
             this.reciboDeCajaToolStripMenuItem.Text = "Ingresos Egresos";
             this.reciboDeCajaToolStripMenuItem.Click += new System.EventHandler(this.reciboDeCajaToolStripMenuItem_Click);
             // 
+            // ingresosEgresosPOSToolStripMenuItem
+            // 
+            this.ingresosEgresosPOSToolStripMenuItem.Name = "ingresosEgresosPOSToolStripMenuItem";
+            this.ingresosEgresosPOSToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.ingresosEgresosPOSToolStripMenuItem.Text = "Ingresos/Egresos POS";
+            this.ingresosEgresosPOSToolStripMenuItem.Click += new System.EventHandler(this.ingresosEgresosPOSToolStripMenuItem_Click);
+            // 
             // detalleGastosIngresosToolStripMenuItem
             // 
             this.detalleGastosIngresosToolStripMenuItem.Name = "detalleGastosIngresosToolStripMenuItem";
@@ -1430,18 +1450,94 @@
             this.btnMenu.Visible = false;
             this.btnMenu.Click += new System.EventHandler(this.btnMenu_Click);
             // 
-            // ingresosEgresosPOSToolStripMenuItem
+            // flowLayoutPanelMenuRapido
             // 
-            this.ingresosEgresosPOSToolStripMenuItem.Name = "ingresosEgresosPOSToolStripMenuItem";
-            this.ingresosEgresosPOSToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
-            this.ingresosEgresosPOSToolStripMenuItem.Text = "Ingresos/Egresos POS";
-            this.ingresosEgresosPOSToolStripMenuItem.Click += new System.EventHandler(this.ingresosEgresosPOSToolStripMenuItem_Click);
+            this.flowLayoutPanelMenuRapido.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.flowLayoutPanelMenuRapido.Controls.Add(this.panel5);
+            this.flowLayoutPanelMenuRapido.Controls.Add(this.ptbxVentaPOS);
+            this.flowLayoutPanelMenuRapido.Controls.Add(this.ptbxGastosPOS);
+            this.flowLayoutPanelMenuRapido.Controls.Add(this.ptbxListaVentasPOS);
+            this.flowLayoutPanelMenuRapido.Controls.Add(this.ptbxAbonosPOS);
+            this.flowLayoutPanelMenuRapido.Dock = System.Windows.Forms.DockStyle.Left;
+            this.flowLayoutPanelMenuRapido.Location = new System.Drawing.Point(0, 66);
+            this.flowLayoutPanelMenuRapido.Name = "flowLayoutPanelMenuRapido";
+            this.flowLayoutPanelMenuRapido.Size = new System.Drawing.Size(93, 477);
+            this.flowLayoutPanelMenuRapido.TabIndex = 10;
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.Crimson;
+            this.panel5.Controls.Add(this.btnAbrirMenu);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel5.Location = new System.Drawing.Point(2, 2);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(91, 46);
+            this.panel5.TabIndex = 9;
+            // 
+            // btnAbrirMenu
+            // 
+            this.btnAbrirMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAbrirMenu.BackgroundImage = global::GRTechnology1._0.Properties.Resources.if_menu_24_103174;
+            this.btnAbrirMenu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAbrirMenu.Location = new System.Drawing.Point(2, 5);
+            this.btnAbrirMenu.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAbrirMenu.Name = "btnAbrirMenu";
+            this.btnAbrirMenu.Size = new System.Drawing.Size(33, 36);
+            this.btnAbrirMenu.TabIndex = 2;
+            this.btnAbrirMenu.UseVisualStyleBackColor = true;
+            this.btnAbrirMenu.Click += new System.EventHandler(this.btnAbrirMenu_Click);
+            // 
+            // ptbxVentaPOS
+            // 
+            this.ptbxVentaPOS.Image = global::GRTechnology1._0.Properties.Resources.salesPOS;
+            this.ptbxVentaPOS.Location = new System.Drawing.Point(3, 53);
+            this.ptbxVentaPOS.Name = "ptbxVentaPOS";
+            this.ptbxVentaPOS.Size = new System.Drawing.Size(86, 65);
+            this.ptbxVentaPOS.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptbxVentaPOS.TabIndex = 0;
+            this.ptbxVentaPOS.TabStop = false;
+            this.ptbxVentaPOS.Click += new System.EventHandler(this.ptbxVentaPOS_Click);
+            // 
+            // ptbxGastosPOS
+            // 
+            this.ptbxGastosPOS.Image = global::GRTechnology1._0.Properties.Resources.gastosPOS;
+            this.ptbxGastosPOS.Location = new System.Drawing.Point(3, 124);
+            this.ptbxGastosPOS.Name = "ptbxGastosPOS";
+            this.ptbxGastosPOS.Size = new System.Drawing.Size(86, 65);
+            this.ptbxGastosPOS.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptbxGastosPOS.TabIndex = 10;
+            this.ptbxGastosPOS.TabStop = false;
+            this.ptbxGastosPOS.Click += new System.EventHandler(this.ptbxGastosPOS_Click);
+            // 
+            // ptbxListaVentasPOS
+            // 
+            this.ptbxListaVentasPOS.Image = global::GRTechnology1._0.Properties.Resources.producto;
+            this.ptbxListaVentasPOS.Location = new System.Drawing.Point(3, 195);
+            this.ptbxListaVentasPOS.Name = "ptbxListaVentasPOS";
+            this.ptbxListaVentasPOS.Size = new System.Drawing.Size(86, 65);
+            this.ptbxListaVentasPOS.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptbxListaVentasPOS.TabIndex = 11;
+            this.ptbxListaVentasPOS.TabStop = false;
+            this.ptbxListaVentasPOS.Click += new System.EventHandler(this.ptbxListaVentasPOS_Click);
+            // 
+            // ptbxAbonosPOS
+            // 
+            this.ptbxAbonosPOS.Image = global::GRTechnology1._0.Properties.Resources.trabajadores_por_cuenta_propia;
+            this.ptbxAbonosPOS.Location = new System.Drawing.Point(3, 266);
+            this.ptbxAbonosPOS.Name = "ptbxAbonosPOS";
+            this.ptbxAbonosPOS.Size = new System.Drawing.Size(86, 65);
+            this.ptbxAbonosPOS.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptbxAbonosPOS.TabIndex = 12;
+            this.ptbxAbonosPOS.TabStop = false;
+            this.ptbxAbonosPOS.Click += new System.EventHandler(this.ptbxAbonosPOS_Click);
             // 
             // Frm_Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1047, 565);
+            this.Controls.Add(this.flowLayoutPanelMenuRapido);
             this.Controls.Add(this.btnMenu);
             this.Controls.Add(this.btnActSistema);
             this.Controls.Add(this.BarraUsu);
@@ -1461,6 +1557,12 @@
             this.toolStrip1.PerformLayout();
             this.BarraUsu.ResumeLayout(false);
             this.BarraUsu.PerformLayout();
+            this.flowLayoutPanelMenuRapido.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ptbxVentaPOS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbxGastosPOS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbxListaVentasPOS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbxAbonosPOS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1623,6 +1725,13 @@
         private System.Windows.Forms.ToolStripMenuItem ventaPOSToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tipoEgresosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ingresosEgresosPOSToolStripMenuItem;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelMenuRapido;
+        private System.Windows.Forms.PictureBox ptbxVentaPOS;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Button btnAbrirMenu;
+        private System.Windows.Forms.PictureBox ptbxGastosPOS;
+        private System.Windows.Forms.PictureBox ptbxListaVentasPOS;
+        private System.Windows.Forms.PictureBox ptbxAbonosPOS;
     }
 }
 

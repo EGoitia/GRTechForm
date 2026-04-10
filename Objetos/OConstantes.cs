@@ -14,7 +14,7 @@ namespace Objetos
         public const int Tipo_Pago_CHEQUE = 14;
         public const int Tipo_Pago_DEPOSITO = 15;
         public const int Tipo_Pago_TRANSFERENCIA = 16;
-        public const int Tipo_Pago_POSTERIOR = 32;
+        public const int Tipo_Pago_POSTERIOR = 36;
 
         #endregion
 

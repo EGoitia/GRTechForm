@@ -24,6 +24,9 @@ namespace GRTechnology1._0
         CntrUsuDeposito deposito = null;
         CntrUsuTarjetas tarjeta = null;
         CntrUsuTransferencia transf = null;
+        CntrlUsuTecladoNumerico teclado = null;
+
+        TextBox txtFoco;
 
         public Frm_Abonos2(bool _aboncli)
         {
@@ -75,7 +78,7 @@ namespace GRTechnology1._0
                     string Consulta = string.Empty;
                     if (AbonoCli)
                         Consulta = "SELECT CodVenta CodNota, NumVenta NumNota, NumFactura, Fecha, Referencia, SucursalID, NomSuc, NomVendedor, Monto, Abonado, (Monto-Abonado)Saldo, TipoVenta Tipo " +
-                            "FROM Vista_Saldos_Ventas WHERE ClienteID=" + cboCliente.ValueMember.ToString() + " AND TipoVenta<>'CONTADO' AND (Monto-Abonado)>0" +
+                            "FROM Vista_Saldos_Ventas WHERE ClienteID=" + cboCliente.ValueMember.ToString() + " AND (Monto-Abonado)>0" +
                             " UNION " +
                             "SELECT CodVenta CodNota, NumVenta NumNota, NumFactura, Fecha, Referencia, SucursalID, NomSuc, NomVendedor, Monto, Abonado, (Monto-Abonado)Saldo, TipoVenta Tipo " +
                             "FROM Vista_Saldos_Anticipos WHERE ClienteID=" + cboCliente.ValueMember.ToString();
@@ -153,10 +156,13 @@ namespace GRTechnology1._0
         {
             try
             {
-                cboTipoPago.DataSource = DListarPersonalizado.ConsultarDT("SELECT TipoID, NomTipo FROM Tipo_Sistema_Fijo Where Estado=1 AND Tupla='PAGO' ORDER BY NomTipo");
+                DataTable dtTipo = DListarPersonalizado.ConsultarDT("SELECT TipoID, NomTipo FROM Tipo_Sistema_Fijo " +
+                        "WHERE Estado=1 AND Tupla='PAGO' AND TipoID NOT IN(" + OConstantes.Tipo_Pago_POSTERIOR + ") " +
+                        "ORDER BY NomTipo");
+                cboTipoPago.DataSource = dtTipo;
                 cboTipoPago.DisplayMember = "NomTipo";
                 cboTipoPago.ValueMember = "TipoID";
-                cboTipoPago.SelectedValue = 12;  //por defecto pago Efectivo
+                cboTipoPago.SelectedValue = OConstantes.Tipo_Pago_EFECTIVO;  //por defecto pago Efectivo
             }
             catch (Exception ex)
             {
@@ -319,10 +325,10 @@ namespace GRTechnology1._0
                     fila["Fecha1"] = deposito.DtFecCobroDep.Value;
                     break;
                 case "16":    //TRANSFERENCIA
-                    fila["Banco1"] = transf.txtBancoOrigen.Text.Trim();
-                    fila["Banco1"] = transf.txtBancoDestino.Text.Trim();
-                    fila["Numero1"] = transf.txtctaOrigen.Text.Trim();
-                    fila["Numero1"] = transf.txtCtaDestino.Text.Trim();
+                    fila["BancoID"] = transf.cboBanco.SelectedValue;
+                    fila["Banco2"] = transf.txtBancoDestino.Text.Trim();
+                    fila["Banco1"] = transf.cboBanco.Text;
+                    fila["Numero2"] = transf.txtCtaDestino.Text.Trim();
                     fila["Fecha1"] = transf.DtFecCobroTransf.Value;
                     break;
             }
@@ -449,6 +455,54 @@ namespace GRTechnology1._0
                 dgvDeudas.Columns["NomVendedor"].HeaderText = "Vendedor";
                 dgvDeudas.Columns["NomVendedor"].Width = 150;
                 dgvDeudas.Columns["NomVendedor"].ReadOnly = true;
+            }
+        }
+
+        private void MostrarTeclado()
+        {
+            if (teclado == null)
+            {
+                teclado = new CntrlUsuTecladoNumerico();
+
+                // Obtener posición real en el formulario
+                Point punto = this.PointToClient(txtFoco.Parent.PointToScreen(txtFoco.Location));
+
+                int margen = 5;
+
+                // Posición por defecto (abajo)
+                int posY = punto.Y + txtFoco.Height + margen;
+
+                // Validar si se sale del formulario
+                if (posY + teclado.Height > this.ClientSize.Height)
+                {
+                    // Mostrar arriba
+                    posY = punto.Y - teclado.Height - margen;
+                }
+
+                // Si igual se sale por arriba
+                if (posY < 0)
+                    posY = margen;
+
+                // Posición X (derecha del textbox)
+                int posX = punto.X;
+
+                // Evitar que se salga a la derecha
+                if (posX + teclado.Width > this.ClientSize.Width)
+                    posX = this.ClientSize.Width - teclado.Width - margen;
+
+                teclado.Location = new Point(posX, posY);
+
+                // Suscribir eventos
+                teclado.OnNumeroPresionado += Teclado_OnNumeroPresionado;
+                teclado.OnBorrar += Teclado_OnBorrar;
+                teclado.OnBorrarTodo += Teclado_OnBorrarTodo;
+                teclado.OnEnter += Teclado_OnEnter;
+                
+                if (!this.Controls.Contains(teclado))
+                    this.Controls.Add(teclado);
+
+                teclado.BringToFront();
+                teclado.Visible = true;
             }
         }
 
@@ -652,6 +706,57 @@ namespace GRTechnology1._0
 
                 Cargado = true;
             }
+        }
+
+        private void txtAbonarBs_Enter(object sender, EventArgs e)
+        {
+            txtFoco = txtAbonarBs;
+            MostrarTeclado();
+        }
+
+        private void Teclado_OnNumeroPresionado(string numero)
+        {
+            if (numero == "." && txtFoco.Text.Contains(".")) return;
+
+            txtFoco.Text += numero;
+            txtFoco.SelectionStart = txtFoco.Text.Length;
+        }
+
+        private void Teclado_OnBorrar()
+        {
+            if (!string.IsNullOrEmpty(txtFoco.Text))
+            {
+                txtFoco.Text = txtFoco.Text.Substring(0, txtFoco.Text.Length - 1);
+                txtFoco.SelectionStart = txtFoco.Text.Length;
+            }
+        }
+
+        private void Teclado_OnBorrarTodo()
+        {
+            txtFoco.Clear();
+        }
+
+        private void Teclado_OnEnter()
+        {
+            teclado.Visible = false;
+        }
+
+        private void txt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
+                e.Handled = true;
+        }
+
+        private void txtAbonarSus_Enter(object sender, EventArgs e)
+        {
+            txtFoco = txtAbonarSus;
+            MostrarTeclado();
+        }
+
+        private void txtTC_Enter(object sender, EventArgs e)
+        {
+            txtFoco = txtTC;
+            MostrarTeclado();
         }
     }
 }

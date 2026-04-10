@@ -108,6 +108,15 @@ namespace GRTechnology1._0
 
                 if (DTSuc.Rows.Count > 0)
                 {
+                    //verificamos si esta tickeado recodar pass
+                    if(chkRecordar.Checked)
+                    {
+                        ConfigGRTech.Default.RecodarPass = chkRecordar.Checked;
+                        ConfigGRTech.Default.NomUsu = txtNombre.Text;
+                        ConfigGRTech.Default.PassUsu = txtContrasenia.Text;
+                        ConfigGRTech.Default.Save();
+                    }
+
                     txtNombre.Enabled = false;
                     txtContrasenia.Enabled = false;
 
@@ -158,9 +167,16 @@ namespace GRTechnology1._0
                 Application.Exit();
             }
 
+            chkRecordar.Checked = ConfigGRTech.Default.RecodarPass;
+            if (chkRecordar.Checked)
+            {
+                txtNombre.Text = ConfigGRTech.Default.NomUsu;
+                txtContrasenia.Text = ConfigGRTech.Default.PassUsu;
+                txtContrasenia.Focus();
+            }
+
             Configuration config = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
             cboSuc.Items.Add(ConfigurationManager.AppSettings["Nombre"]);
-
             cboSuc.Text = ConfigurationManager.AppSettings["Nombre"];
         }
 

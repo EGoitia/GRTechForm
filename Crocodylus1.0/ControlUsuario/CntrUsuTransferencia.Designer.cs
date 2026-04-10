@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.grbTransferencia = new System.Windows.Forms.GroupBox();
+            this.cboBanco = new System.Windows.Forms.ComboBox();
             this.Label12 = new System.Windows.Forms.Label();
             this.Label28 = new System.Windows.Forms.Label();
             this.DtFecCobroTransf = new System.Windows.Forms.DateTimePicker();
@@ -36,15 +37,14 @@
             this.txtCtaDestino = new System.Windows.Forms.TextBox();
             this.Label31 = new System.Windows.Forms.Label();
             this.txtBancoDestino = new System.Windows.Forms.TextBox();
-            this.txtctaOrigen = new System.Windows.Forms.TextBox();
             this.Label33 = new System.Windows.Forms.Label();
-            this.txtBancoOrigen = new System.Windows.Forms.TextBox();
             this.grbTransferencia.SuspendLayout();
             this.SuspendLayout();
             // 
             // grbTransferencia
             // 
             this.grbTransferencia.BackColor = System.Drawing.Color.Transparent;
+            this.grbTransferencia.Controls.Add(this.cboBanco);
             this.grbTransferencia.Controls.Add(this.Label12);
             this.grbTransferencia.Controls.Add(this.Label28);
             this.grbTransferencia.Controls.Add(this.DtFecCobroTransf);
@@ -52,15 +52,22 @@
             this.grbTransferencia.Controls.Add(this.txtCtaDestino);
             this.grbTransferencia.Controls.Add(this.Label31);
             this.grbTransferencia.Controls.Add(this.txtBancoDestino);
-            this.grbTransferencia.Controls.Add(this.txtctaOrigen);
             this.grbTransferencia.Controls.Add(this.Label33);
-            this.grbTransferencia.Controls.Add(this.txtBancoOrigen);
             this.grbTransferencia.Location = new System.Drawing.Point(3, 3);
             this.grbTransferencia.Name = "grbTransferencia";
             this.grbTransferencia.Size = new System.Drawing.Size(461, 97);
             this.grbTransferencia.TabIndex = 1523;
             this.grbTransferencia.TabStop = false;
             this.grbTransferencia.Text = "Transferencia:";
+            // 
+            // cboBanco
+            // 
+            this.cboBanco.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboBanco.FormattingEnabled = true;
+            this.cboBanco.Location = new System.Drawing.Point(85, 15);
+            this.cboBanco.Name = "cboBanco";
+            this.cboBanco.Size = new System.Drawing.Size(370, 21);
+            this.cboBanco.TabIndex = 979;
             // 
             // Label12
             // 
@@ -130,15 +137,6 @@
             this.txtBancoDestino.Size = new System.Drawing.Size(263, 20);
             this.txtBancoDestino.TabIndex = 971;
             // 
-            // txtctaOrigen
-            // 
-            this.txtctaOrigen.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtctaOrigen.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.txtctaOrigen.Location = new System.Drawing.Point(85, 16);
-            this.txtctaOrigen.Name = "txtctaOrigen";
-            this.txtctaOrigen.Size = new System.Drawing.Size(101, 20);
-            this.txtctaOrigen.TabIndex = 969;
-            // 
             // Label33
             // 
             this.Label33.AutoSize = true;
@@ -149,15 +147,6 @@
             this.Label33.TabIndex = 968;
             this.Label33.Text = "Bco. Origen:";
             // 
-            // txtBancoOrigen
-            // 
-            this.txtBancoOrigen.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtBancoOrigen.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.txtBancoOrigen.Location = new System.Drawing.Point(192, 16);
-            this.txtBancoOrigen.Name = "txtBancoOrigen";
-            this.txtBancoOrigen.Size = new System.Drawing.Size(263, 20);
-            this.txtBancoOrigen.TabIndex = 0;
-            // 
             // CntrUsuTransferencia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -165,6 +154,7 @@
             this.Controls.Add(this.grbTransferencia);
             this.Name = "CntrUsuTransferencia";
             this.Size = new System.Drawing.Size(467, 105);
+            this.Load += new System.EventHandler(this.CntrUsuTransferencia_Load);
             this.grbTransferencia.ResumeLayout(false);
             this.grbTransferencia.PerformLayout();
             this.ResumeLayout(false);
@@ -181,8 +171,7 @@
         internal System.Windows.Forms.TextBox txtCtaDestino;
         internal System.Windows.Forms.Label Label31;
         internal System.Windows.Forms.TextBox txtBancoDestino;
-        internal System.Windows.Forms.TextBox txtctaOrigen;
         internal System.Windows.Forms.Label Label33;
-        internal System.Windows.Forms.TextBox txtBancoOrigen;
+        public System.Windows.Forms.ComboBox cboBanco;
     }
 }

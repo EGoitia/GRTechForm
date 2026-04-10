@@ -67,5 +67,41 @@ namespace GRTechnology1._0 {
                 return ((string)(this["Display_BaudRate"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string NomUsu {
+            get {
+                return ((string)(this["NomUsu"]));
+            }
+            set {
+                this["NomUsu"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string PassUsu {
+            get {
+                return ((string)(this["PassUsu"]));
+            }
+            set {
+                this["PassUsu"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool RecodarPass {
+            get {
+                return ((bool)(this["RecodarPass"]));
+            }
+            set {
+                this["RecodarPass"] = value;
+            }
+        }
     }
 }

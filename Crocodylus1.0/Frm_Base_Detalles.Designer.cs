@@ -132,6 +132,7 @@
             this.dgvDetalle.Location = new System.Drawing.Point(10, 110);
             this.dgvDetalle.Name = "dgvDetalle";
             this.dgvDetalle.ReadOnly = true;
+            this.dgvDetalle.RowHeadersWidth = 21;
             this.dgvDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDetalle.Size = new System.Drawing.Size(865, 220);
             this.dgvDetalle.TabIndex = 5;

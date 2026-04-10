@@ -34,7 +34,7 @@ namespace GRTechnology1._0.ControlUsuario
                 cboTipoPgo.DataSource = DatosDS.Tables[2];
                 cboTipoPgo.DisplayMember = "NomTipo";
                 cboTipoPgo.ValueMember = "TipoID";
-                cboTipoPgo.SelectedValue = 12;  //EFECTIVO
+                cboTipoPgo.SelectedValue = OConstantes.Tipo_Pago_EFECTIVO;  //EFECTIVO
             }
             catch (Exception ex)
             {
@@ -148,7 +148,7 @@ namespace GRTechnology1._0.ControlUsuario
                        "' AND '" + dtFechaFin.Value.ToShortDateString() + "' " +
                        (chkSucursal.Checked ? " AND SucursalID=" + cboSucursal.SelectedValue : "") +
                        (chkUsuario.Checked ? " AND UsuarioID=" + cboUsuario.SelectedValue : "") +
-                       " UNION " +
+                       " UNION ALL " +
                        "SELECT CodIngrEgre, NumIngrEgre, NombreCuenta, CajaID, NomCaja, NomSuc, Fecha, Concepto, MontoBs, 'EGRESOS', 0 " +
                        "FROM Vista_Ingresos_Egresos WHERE Estado=1 AND TipoIngrEgre='E' AND CONVERT(DATE, Fecha) BETWEEN '" + dtFechaIni.Value.ToShortDateString() +
                        "' AND '" + dtFechaFin.Value.ToShortDateString() + "' " +

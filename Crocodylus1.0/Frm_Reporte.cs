@@ -5,6 +5,8 @@ using System.Data;
 using System.Drawing.Printing;
 using System.Windows.Forms;
 using Datos;
+using System.IO;
+using CrystalDecisions.Shared;
 
 namespace GRTechnology1._0
 {
@@ -213,6 +215,93 @@ namespace GRTechnology1._0
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "MENSAJE", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void ExportarPDF(string archivo, bool abrirAlFinal = true, int? sucursalid = null)
+        {
+            if (Dts.Tables["Datos"].Rows.Count > 0)
+                Dts.Tables["Datos"].Rows.Clear();
+
+            try
+            {
+                DataRow dr = Dts.Tables["Datos"].NewRow();
+                dr["Titulo"] = Titulo;
+                dr["Logo"] = OConexionGlobal.LogoEmp;
+                dr["Usuario"] = OConexionGlobal.NomUsu;
+                dr["Descripcion"] = "hola mundo";
+                dr["Variable"] = Variable;
+                dr["Moneda"] = "Bolivianos";
+                dr["Variable2"] = Variable2;
+                dr["MarcaAgua"] = OConexionGlobal.LogoEmp;
+                dr["NomEmp"] = OConexionGlobal.NomEmp;
+                dr["Email"] = "";
+
+                if (sucursalid == null)
+                {
+                    dr["NomSuc"] = OConexionGlobal.NomSuc;
+                    dr["Ciudad"] = OConexionGlobal.Ciudad + " - " + OConexionGlobal.Pais;
+                    dr["Telf"] = OConexionGlobal.Telf;
+                    dr["Direccion"] = OConexionGlobal.Direccion;
+                }
+                else
+                {
+                    DataTable dtsuc = DListarPersonalizado.ConsultarDT(
+                        "SELECT NomSuc, Telf, Ciudad, Direccion FROM Vista_Sucursal WHERE SucursalID=" + sucursalid);
+
+                    dr["NomSuc"] = dtsuc.Rows[0]["NomSuc"].ToString();
+                    dr["Ciudad"] = dtsuc.Rows[0]["Ciudad"].ToString() + " - " + OConexionGlobal.Pais;
+                    dr["Telf"] = dtsuc.Rows[0]["Telf"].ToString();
+                    dr["Direccion"] = dtsuc.Rows[0]["Direccion"].ToString();
+                }
+
+                Dts.Tables["Datos"].Rows.Add(dr);
+
+                string rutaReporte = Path.Combine(Application.StartupPath, "Reportes", archivo + ".rpt");
+                Reporte.Load(rutaReporte);
+                Reporte.SetDataSource(Dts);
+                Reporte.Refresh();
+
+                // 🟡 Nombre sugerido
+                string nombreReporte = "Venta_" + DateTime.Now.ToString("yyyyMMdd_HHmmss");
+
+                // 🟢 Selector de archivo
+                using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+                {
+                    saveFileDialog.Title = "Guardar PDF";
+                    saveFileDialog.Filter = "Archivo PDF (*.pdf)|*.pdf";
+                    saveFileDialog.FileName = nombreReporte;
+                    saveFileDialog.DefaultExt = "pdf";
+                    saveFileDialog.AddExtension = true;
+
+                    if (saveFileDialog.ShowDialog() != DialogResult.OK)
+                        return; // usuario canceló
+
+                    string rutaPdf = saveFileDialog.FileName;
+
+                    // Exportar
+                    Reporte.ExportToDisk(ExportFormatType.PortableDocFormat, rutaPdf);
+
+                    // Abrir automáticamente
+                    if (abrirAlFinal && File.Exists(rutaPdf))
+                    {
+                        System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo()
+                        {
+                            FileName = rutaPdf,
+                            UseShellExecute = true
+                        });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "MENSAJE", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                //Muy importante con Crystal
+                Reporte.Close();
+                Reporte.Dispose();
             }
         }
 

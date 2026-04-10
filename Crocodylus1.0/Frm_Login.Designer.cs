@@ -39,6 +39,7 @@
             this.panelSuc = new System.Windows.Forms.Panel();
             this.cboSuc = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.chkRecordar = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.panelSuc.SuspendLayout();
             this.SuspendLayout();
@@ -46,6 +47,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.chkRecordar);
             this.groupBox1.Controls.Add(this.lblMensaje);
             this.groupBox1.Controls.Add(this.txtContrasenia);
             this.groupBox1.Controls.Add(this.txtNombre);
@@ -56,7 +58,7 @@
             this.groupBox1.Controls.Add(this.panelSuc);
             this.groupBox1.Location = new System.Drawing.Point(9, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(290, 199);
+            this.groupBox1.Size = new System.Drawing.Size(328, 199);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             // 
@@ -160,12 +162,23 @@
             this.label3.TabIndex = 31;
             this.label3.Text = "Sucursal:";
             // 
+            // chkRecordar
+            // 
+            this.chkRecordar.AutoSize = true;
+            this.chkRecordar.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.chkRecordar.Location = new System.Drawing.Point(247, 54);
+            this.chkRecordar.Name = "chkRecordar";
+            this.chkRecordar.Size = new System.Drawing.Size(70, 17);
+            this.chkRecordar.TabIndex = 33;
+            this.chkRecordar.Text = "Recordar";
+            this.chkRecordar.UseVisualStyleBackColor = true;
+            // 
             // Frm_Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(308, 214);
+            this.ClientSize = new System.Drawing.Size(347, 214);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.KeyPreview = true;
@@ -196,5 +209,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panelSuc;
+        private System.Windows.Forms.CheckBox chkRecordar;
     }
 }

@@ -15,7 +15,8 @@ namespace Datos
             List<Parametros> LParam = new List<Parametros>();
             LParam.Add(new Parametros("@Consulta", Consulta));
 
-            return man.ListadoDT("ConsultaDB", LParam);
+            var data = man.ListadoDT("ConsultaDB", LParam);
+            return data;
         }
 
         public static DataSet ConsultarDS(string Consulta)

@@ -582,6 +582,12 @@
     <Compile Include="ControlUsuario\CntrlUsuFiltroVentas.Designer.cs">
       <DependentUpon>CntrlUsuFiltroVentas.cs</DependentUpon>
     </Compile>
+    <Compile Include="ControlUsuario\CntrlUsuTecladoNumerico.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlUsuario\CntrlUsuTecladoNumerico.Designer.cs">
+      <DependentUpon>CntrlUsuTecladoNumerico.cs</DependentUpon>
+    </Compile>
     <Compile Include="ControlUsuario\CntrUsuBtnProducto.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -658,6 +664,12 @@
     <Compile Include="Frm_Abonos2.Designer.cs">
       <DependentUpon>Frm_Abonos2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm_AbonosPOS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_AbonosPOS.Designer.cs">
+      <DependentUpon>Frm_AbonosPOS.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm_Cajas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -729,6 +741,12 @@
     </Compile>
     <Compile Include="Frm_Detalle_Vencimientos.Designer.cs">
       <DependentUpon>Frm_Detalle_Vencimientos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_Detalle_VentaPOS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Detalle_VentaPOS.Designer.cs">
+      <DependentUpon>Frm_Detalle_VentaPOS.cs</DependentUpon>
     </Compile>
     <Compile Include="Frm_Detalle_Ventas_Automaticas.cs">
       <SubType>Form</SubType>
@@ -1948,6 +1966,9 @@
     <EmbeddedResource Include="ControlUsuario\CntrlUsuFiltroVentas.resx">
       <DependentUpon>CntrlUsuFiltroVentas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ControlUsuario\CntrlUsuTecladoNumerico.resx">
+      <DependentUpon>CntrlUsuTecladoNumerico.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ControlUsuario\CntrUsuBtnProducto.resx">
       <DependentUpon>CntrUsuBtnProducto.cs</DependentUpon>
     </EmbeddedResource>
@@ -1984,6 +2005,9 @@
     <EmbeddedResource Include="Frm_Abonos2.resx">
       <DependentUpon>Frm_Abonos2.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Frm_AbonosPOS.resx">
+      <DependentUpon>Frm_AbonosPOS.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frm_Cajas.resx">
       <DependentUpon>Frm_Cajas.cs</DependentUpon>
     </EmbeddedResource>
@@ -2019,6 +2043,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_Detalle_Vencimientos.resx">
       <DependentUpon>Frm_Detalle_Vencimientos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Detalle_VentaPOS.resx">
+      <DependentUpon>Frm_Detalle_VentaPOS.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_Detalle_Ventas_Automaticas.resx">
       <DependentUpon>Frm_Detalle_Ventas_Automaticas.cs</DependentUpon>
@@ -2614,6 +2641,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\trabajadores-por-cuenta-propia.png" />
+    <None Include="Resources\producto.png" />
+    <None Include="Resources\descargar-pdf.png" />
+    <None Include="Resources\impresora.png" />
+    <None Include="Resources\keyboard.png" />
+    <None Include="Resources\gastosPOS.png" />
+    <None Include="Resources\salesPOS.png" />
     <None Include="Resources\pagodespues.png" />
     <None Include="Resources\tarjeta.jpg" />
     <None Include="Resources\pagoqr %282%29.jpg" />

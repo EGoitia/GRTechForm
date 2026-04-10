@@ -268,10 +268,10 @@ namespace GRTechnology1._0
                     fila["Fecha1"] = deposito.DtFecCobroDep.Value;
                     break;
                 case "16":    //TRANSFERENCIA
-                    fila["Banco1"] = transf.txtBancoOrigen.Text.Trim();
-                    fila["Banco1"] = transf.txtBancoDestino.Text.Trim();
-                    fila["Numero1"] = transf.txtctaOrigen.Text.Trim();
-                    fila["Numero1"] = transf.txtCtaDestino.Text.Trim();
+                    fila["BancoID"] = transf.cboBanco.SelectedValue;
+                    fila["Banco2"] = transf.txtBancoDestino.Text.Trim();
+                    fila["Banco1"] = transf.cboBanco.Text;
+                    fila["Numero2"] = transf.txtCtaDestino.Text.Trim();
                     fila["Fecha1"] = transf.DtFecCobroTransf.Value;
                     break;
             }

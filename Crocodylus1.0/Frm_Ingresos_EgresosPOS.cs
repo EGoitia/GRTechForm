@@ -17,15 +17,16 @@ namespace GRTechnology1._0
 
         Frm_Reporte FrmRep = null;
 
+        CntrUsuTransferencia transf = null;
+        CntrlUsuTecladoNumerico teclado;
+
         private DataTable DTTipoEgreso;
         private DataTable DTCuentas;
-        //private DataTable DTCajas;
-
-        TextBox txtActivo;
-
+        
         IEnumerable<DataRow> DRCuentas = null;
 
         bool sw = true;
+        bool Cargado = false;
         int IDTipo = 0;
         int IDCuenta = 0;
 
@@ -49,31 +50,31 @@ namespace GRTechnology1._0
 
                 rec = new OIngresoEgreso();
                 rec.CodIngrEgre = string.Empty;
-                rec.Concepto = txtConcepto.Text.Trim();
+                rec.Concepto = txtNomCuenta.Text.Trim();
                 rec.Detalle = txtDetalle.Text.Trim();
-                //rec.TipoIngrEgre = cboTipo.Text;
+                rec.TipoIngrEgre = "E";
                 rec.VariosPersonActivID = 1; //varios;
                 rec.SucursalID = OConexionGlobal.SucursalID;
                 rec.CajaID = (int)cboCaja.SelectedValue;
                 rec.Cuenta_Ingreso_EgresoID = IDCuenta;
                 rec.PersonActivID = -1;
-                //rec.Monto = Convert.ToDecimal(txtMontoBs.Text);
-                //rec.TC = Convert.ToDecimal(txtTC.Text);                
-                //rec.TipoPagoDT = InsertDetallePago();
-                //rec.ReciboDT = recib.ReciboDT(rbRecibo.Checked);
-                //rec.FacturaDT = fact.FacturaDT(rbFactura.Checked);
+                rec.Monto = Convert.ToDecimal(txtMontoBs.Text);
+                rec.TC = Convert.ToDecimal(txtTC.Text);
+                rec.TipoPagoDT = InsertDetallePago();
+                rec.ReciboDT = ReciboDT();
+                rec.FacturaDT = FacturaDT();
 
                 string resp = DIngrEgre.DInsertModifIngrEgre(rec, OInmode.DTInmode("", "NUEVO", ""));
                 if (resp != "-1")
                 {
                     MessageBox.Show("LOS DATOS SE GUARDARON CORRECTAMENTE", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    //BorrarCampos(gbxRecib, "");
-                    //BorrarCampos(gbxTipPago, "0.00");
-                    //txtTC.Text = "6.96";
+                    BorrarCampos(gbxDatos, "");
+                    txtTC.Text = "6.96";
+                    IDCuenta = 0;
 
-                    //recib.Borrar_Recibo();
-                    //fact.Borrar_Factura();
+                    if (transf != null)
+                        transf.BorrarTransf();
                 }
             }
             catch (Exception ex)
@@ -86,6 +87,107 @@ namespace GRTechnology1._0
                 btnGuardar.Enabled = true;
             }
         }
+
+        private void BorrarCampos(GroupBox gbx, string param)
+        {
+            OpcionFormularios lim = new OpcionFormularios();
+            lim.BorrarCampos(gbx, param);
+        }
+
+        private DataTable InsertDetallePago()
+        {
+            DataTable DetPagoDT = new DataTable();
+            DetPagoDT.Columns.Add("PagoID");
+            DetPagoDT.Columns.Add("TipoPagoID");
+            DetPagoDT.Columns.Add("BancoID");
+            DetPagoDT.Columns.Add("Monto");
+            DetPagoDT.Columns.Add("Cambio");
+            DetPagoDT.Columns.Add("TC");
+            DetPagoDT.Columns.Add("Fecha1");
+            DetPagoDT.Columns.Add("Fecha2");
+            DetPagoDT.Columns.Add("Numero1");
+            DetPagoDT.Columns.Add("Numero2");
+            DetPagoDT.Columns.Add("Banco1");
+            DetPagoDT.Columns.Add("Banco2");
+            DetPagoDT.Columns.Add("Estado");
+
+            DataRow fila = DetPagoDT.NewRow();
+            fila["PagoID"] = -1;
+            fila["TipoPagoID"] = cboTipoPago.SelectedValue;
+            fila["Monto"] = decimal.Parse(txtMontoBs.Text);
+            fila["TC"] = decimal.Parse(txtTC.Text);
+            fila["Cambio"] = 0;
+            fila["Estado"] = true;
+
+            switch (cboTipoPago.SelectedValue.ToString())
+            {
+                //case "13":    //TARJETA
+                //    fila["Banco1"] = tarjeta.txtbancoTar.Text.Trim();
+                //    fila["Numero1"] = tarjeta.txtRefTar.Text.Trim();
+                //    break;
+                //case "14":    //CHEQUE
+                //    fila["Banco1"] = cheque.txtBancoCheque.Text.Trim();
+                //    fila["Numero1"] = cheque.TxtCheque.Text.Trim();
+                //    fila["Fecha1"] = cheque.txtFechaChequeEmi.Value;
+                //    fila["Fecha2"] = cheque.txtFechaChequeCobro.Value;
+                //    break;
+                //case "15":    //DEPOSITO
+                //    fila["Banco1"] = deposito.txtBancoDep.Text.Trim();
+                //    fila["Numero1"] = deposito.txtCuentaDep.Text.Trim();
+                //    fila["Fecha1"] = deposito.DtFecCobroDep.Value;
+                //    break;
+                case "16":    //TRANSFERENCIA
+                    fila["BancoID"] = transf.cboBanco.SelectedValue;
+                    fila["Banco2"] = transf.txtBancoDestino.Text.Trim();
+                    fila["Banco1"] = transf.cboBanco.Text.Trim();
+                    fila["Numero2"] = transf.txtCtaDestino.Text.Trim();
+                    fila["Fecha1"] = transf.DtFecCobroTransf.Value;
+                    break;
+            }
+
+            DetPagoDT.Rows.Add(fila);
+
+            return DetPagoDT;
+        }
+
+        private DataTable ReciboDT()
+        {
+            DataTable recibdt = new DataTable();
+            recibdt.Columns.Add("ReciboID");
+            recibdt.Columns.Add("Numero");
+            recibdt.Columns.Add("Fecha");
+            recibdt.Columns.Add("Retencion");
+            recibdt.Columns.Add("RetencionID");
+            recibdt.Columns.Add("Monto");
+
+            return recibdt;
+        }
+
+        private DataTable FacturaDT()
+        {
+            DataTable factdt = new DataTable();
+            factdt.Columns.Add("FacturaID");
+            factdt.Columns.Add("Numero");
+            factdt.Columns.Add("Fecha");
+            factdt.Columns.Add("RazonSocial");
+            factdt.Columns.Add("NIT");
+            factdt.Columns.Add("Codigo_Control");
+            factdt.Columns.Add("Descripcion");
+            factdt.Columns.Add("Monto");
+            factdt.Columns.Add("Dscto");
+            factdt.Columns.Add("IVA");
+            factdt.Columns.Add("ICE");
+            factdt.Columns.Add("Exentos");
+            factdt.Columns.Add("Total");
+            factdt.Columns.Add("SucursalID");
+            factdt.Columns.Add("Autorizacion");
+            factdt.Columns.Add("ActividadID");
+            factdt.Columns.Add("DosificacionID");
+            factdt.Columns.Add("Estado");
+
+            return factdt;
+        }
+
 
         public void ListarTipoEgreso()
         {
@@ -116,15 +218,39 @@ namespace GRTechnology1._0
             }
         }
 
+        private void Listar_TipoPago()
+        {
+            try
+            {
+                cboTipoPago.DataSource = DListarPersonalizado.ConsultarLocalDT("SELECT TipoID, NomTipo FROM Tipo_Sistema_Fijo " +
+                    "WHERE Estado=1 AND Tupla='PAGO' AND TipoID NOT IN(" + OConstantes.Tipo_Pago_POSTERIOR + ") ORDER BY NomTipo");
+                cboTipoPago.DisplayMember = "NomTipo";
+                cboTipoPago.ValueMember = "TipoID";
+                cboTipoPago.SelectedValue = OConstantes.Tipo_Pago_EFECTIVO;  //por defecto pago Efectivo
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
         private void Listar_CajasUsuario()
         {
             try
             {
-                cboCaja.DataSource = DListarPersonalizado.ConsultarDT("SELECT CajaID, NomCaja FROM Vista_Cajas_Usuario " +
+                DataTable CajaUsuDT = DListarPersonalizado.ConsultarDT("SELECT CajaID, NomCaja FROM Vista_Cajas_Usuario " +
                     "WHERE UsuarioID=" + OConexionGlobal.UsuarioID +
                     "UNION SELECT -1 CajaID, '[SELECCIONE UNA CAJA]' NomCaja ORDER BY NomCaja");
+                cboCaja.DataSource = CajaUsuDT;
                 cboCaja.DisplayMember = "NomCaja";
                 cboCaja.ValueMember = "CajaID";
+
+                if(CajaUsuDT.Rows.Count == 2)
+                {
+                    var ultimoCajaID = CajaUsuDT.Rows[1]["CajaID"];
+                    cboCaja.SelectedValue = ultimoCajaID;
+                } 
+
                 cboCaja.Refresh();
             }
             catch (Exception ex)
@@ -139,9 +265,13 @@ namespace GRTechnology1._0
             {
                 //Tipo
                 string ConsultaSQL = "SELECT TipoID, NomTipo, Tupla, Estado FROM Tipo; ";
+                //Tipo Fijo
+                ConsultaSQL += "SELECT TipoID, NomTipo, Tupla, Estado FROM Tipo_Sistema_Fijo; ";
                 //Cuentas Ingresos Egresos
                 ConsultaSQL += "SELECT Cuenta_Ingreso_EgresoID, TipoIngresoEgreso, Nombre, Descripcion, TipoCuentaID, Estado " +
                      "FROM Cuenta_Ingresos_Egresos; ";
+                //Cajas
+                ConsultaSQL += "SELECT CajaID, TipoCajaID, NomCaja, NomCaja Descripcion, Estado FROM Caja; ";
 
 
                 DataSet ds = DListarPersonalizado.ConsultarDS(ConsultaSQL);
@@ -152,10 +282,22 @@ namespace GRTechnology1._0
                     DTipo.InsertModif_TipoLocal(ds.Tables[0]);
                 }
 
-                //guardamos las cuentas
+                //guardamos los tipos fijos
                 if (ds != null && ds.Tables.Count > 0 && ds.Tables[1].Rows.Count > 0)
                 {
-                    DCuenta_Ingreso_Egreso.DInsertModifCuentaIngrEgreLocal(ds.Tables[1]);
+                    DTipo.InsertModif_TipoFijoLocal(ds.Tables[1]);
+                }
+
+                //guardamos las cuentas
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[2].Rows.Count > 0)
+                {
+                    DCuenta_Ingreso_Egreso.DInsertModifCuentaIngrEgreLocal(ds.Tables[2]);
+                }
+
+                //guardamos las cajas
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[3].Rows.Count > 0)
+                {
+                    DCaja.DInsertModifCajaLocal(ds.Tables[3]);
                 }
                 
                 ListarDatos();
@@ -228,6 +370,7 @@ namespace GRTechnology1._0
             ListarCuentas();
             ListarTipoEgreso();           
             Listar_CajasUsuario();
+            Listar_TipoPago();
             Autocompletar();
         }
 
@@ -247,6 +390,23 @@ namespace GRTechnology1._0
             if (!DInicioCaja.TieneInicioCajaUsuarioSucursal())
             {
                 MessageBox.Show("TIENE QUE INICIAR CAJA", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return false;
+            }
+            else if (cboCaja.SelectedValue == null || Convert.ToInt32(cboCaja.SelectedValue) == -1)
+            {
+                MessageBox.Show("SELECCIONE UNA CAJA", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return false;
+            }
+            else if(IDCuenta == 0)
+            {
+                MessageBox.Show("SELECCIONE UNA CUENTA", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return false;
+            }
+
+            decimal monto;
+            if (!decimal.TryParse(txtMontoBs.Text, out monto) || monto <= 0)
+            {
+                MessageBox.Show("EL MONTO TIENE QUE SER MAYOR A CERO", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return false;
             }
 
@@ -358,10 +518,11 @@ namespace GRTechnology1._0
         private void Frm_Ingresos_EgresosPOS_Load(object sender, EventArgs e)
         {
             panelLeft.Width = 475;
-            txtActivo = txtConcepto;
             FrmRep = new Frm_Reporte();
-
+                       
             ListarDatos();
+
+            Cargado = true;
         }
 
         private void Frm_Ingresos_EgresosPOS_FormClosing(object sender, FormClosingEventArgs e)
@@ -390,6 +551,7 @@ namespace GRTechnology1._0
         {
             Button pbc = (Button)sender;
             IDCuenta = Convert.ToInt32(pbc.Name);
+            txtNomCuenta.Text = pbc.Text;
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -405,12 +567,8 @@ namespace GRTechnology1._0
                 this.Close();
         }
         
-        private void txtConcepto_MouseClick(object sender, MouseEventArgs e)
+        private void btnTecladoVirtual_Click(object sender, EventArgs e)
         {
-            txtActivo.BackColor = Color.White;
-            txtActivo = txtConcepto;
-            txtActivo.BackColor = Color.DodgerBlue;
-
             Process.Start(new ProcessStartInfo
             {
                 FileName = @"C:\Program Files\Common Files\Microsoft Shared\ink\TabTip.exe",
@@ -418,46 +576,96 @@ namespace GRTechnology1._0
             });
         }
 
-        private void txtDetalle_MouseClick(object sender, MouseEventArgs e)
+        private void cboTipoPago_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txtActivo.BackColor = Color.White;
-            txtActivo = txtDetalle;
-            txtActivo.BackColor = Color.DodgerBlue;
-
-            Process.Start(new ProcessStartInfo
+            if (Cargado)
             {
-                FileName = @"C:\Program Files\Common Files\Microsoft Shared\ink\TabTip.exe",
-                UseShellExecute = true
-            });
+                panelTipPago.Controls.Clear();
+
+                switch (cboTipoPago.SelectedValue.ToString())
+                {
+                //    case "13":  //TARJETA
+                //        if (tarjeta == null)
+                //        { tarjeta = new CntrUsuTarjetas(); }
+                //        panelTipPago.Controls.Add(tarjeta);
+                //        tarjeta.BorrarTarjeta();
+                //        break;
+                //    case "14":  //CHEQUE
+                //        if (cheque == null)
+                //        { cheque = new CntrUsuCheque(); }
+                //        panelTipPago.Controls.Add(cheque);
+                //        cheque.BorrarCheque();
+                //        break;
+                //    case "15": //DEPOSITO
+                //        if (deposito == null)
+                //        { deposito = new CntrUsuDeposito(); }
+                //        panelTipPago.Controls.Add(deposito);
+                //        deposito.BorrarDeposito();
+                //        break;
+                    case "16": //TRANSFERENCIA
+                        if (transf == null)
+                        { transf = new CntrUsuTransferencia(); }
+                        panelTipPago.Controls.Add(transf);
+                        transf.BorrarTransf();
+                        break;
+                }
+            }
         }
 
-        private void txtMontoBs_MouseClick(object sender, MouseEventArgs e)
+        private void txtMontoBs_Enter(object sender, EventArgs e)
         {
-            txtActivo.BackColor = Color.White;
-            txtActivo = txtMontoBs;
-            txtActivo.BackColor = Color.DodgerBlue;
-
-            Process.Start(new ProcessStartInfo
+            if (teclado == null)
             {
-                FileName = @"C:\Program Files\Common Files\Microsoft Shared\ink\TabTip.exe",
-                UseShellExecute = true
-            });
+                teclado = new CntrlUsuTecladoNumerico();
+
+                // Posición (al lado del textbox)
+                var punto = this.PointToClient(txtMontoBs.Parent.PointToScreen(txtMontoBs.Location));
+                teclado.Location = new Point(punto.X + txtMontoBs.Width + 10, punto.Y);
+
+                // Suscribir eventos
+                teclado.OnNumeroPresionado += Teclado_OnNumeroPresionado;
+                teclado.OnBorrar += Teclado_OnBorrar;
+                teclado.OnBorrarTodo += Teclado_OnBorrarTodo;
+                teclado.OnEnter += Teclado_OnEnter;
+
+                this.Controls.Add(teclado);
+                teclado.BringToFront();
+            }
+
+            teclado.Visible = true;
         }
 
-        //public static bool EsPantallaTactil()
-        //{
-        //    try
-        //    {
-        //        using (var searcher = new ManagementObjectSearcher("SELECT * FROM Win32_PnPEntity"))
-        //        {
-        //            return searcher.Get().Cast<ManagementObject>()
-        //                .Any(x => x["Name"] != null && x["Name"].ToString().ToLower().Contains("touch"));
-        //        }
-        //    }
-        //    catch
-        //    {
-        //        return false;
-        //    }
-        //}
+        private void Teclado_OnNumeroPresionado(string numero)
+        {
+            if (numero == "." && txtMontoBs.Text.Contains(".")) return;
+
+            txtMontoBs.Text += numero;
+            txtMontoBs.SelectionStart = txtMontoBs.Text.Length;
+        }
+
+        private void Teclado_OnBorrar()
+        {
+            if (!string.IsNullOrEmpty(txtMontoBs.Text))
+            {
+                txtMontoBs.Text = txtMontoBs.Text.Substring(0, txtMontoBs.Text.Length - 1);
+                txtMontoBs.SelectionStart = txtMontoBs.Text.Length;
+            }
+        }
+
+        private void Teclado_OnBorrarTodo()
+        {
+            txtMontoBs.Clear();
+        }
+
+        private void Teclado_OnEnter()
+        {
+            teclado.Visible = false;
+        }
+        
+        private void txtMontoBs_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
+                e.Handled = true;
+        }
     }
 }

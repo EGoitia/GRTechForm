@@ -40,6 +40,35 @@ namespace Datos
             return id;
         }
 
+        public static void InsertModif_TipoFijoLocal(DataTable dtTipo)
+        {
+            using (SqlConnection miCon = new SqlConnection(AppConfig.CadenaConexionLocal))
+            {
+                SqlCommand miCmd = new SqlCommand("InsertModifTipoFijo_Local", miCon);
+                miCmd.CommandType = CommandType.StoredProcedure;
+                miCmd.Parameters.AddWithValue("@LstTipo", dtTipo);
+
+                IDataParameter ReturnValue;
+                ReturnValue = miCmd.CreateParameter();
+                ReturnValue.Direction = ParameterDirection.ReturnValue;
+                miCmd.Parameters.Add(ReturnValue);
+
+                try
+                {
+                    miCon.Open();
+                    miCmd.ExecuteNonQuery();
+                }
+                catch (SqlException ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+                finally
+                {
+                    miCon.Close();
+                }
+            }
+        }
+
         public static void InsertModif_TipoLocal(DataTable dtTipo)
         {
             using (SqlConnection miCon = new SqlConnection(AppConfig.CadenaConexionLocal))

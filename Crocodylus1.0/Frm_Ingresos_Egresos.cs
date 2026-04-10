@@ -53,7 +53,7 @@ namespace GRTechnology1._0
         {
             try
             {
-                cboTipoPago.DataSource = DListarPersonalizado.ConsultarDT("SELECT TipoID, NomTipo FROM Tipo_Sistema_Fijo Where Estado=1 AND Tupla='PAGO' ORDER BY NomTipo");
+                cboTipoPago.DataSource = DListarPersonalizado.ConsultarDT("SELECT TipoID, NomTipo FROM Tipo_Sistema_Fijo Where Estado=1 AND Tupla='PAGO' AND TipoID NOT IN(32) ORDER BY NomTipo");
                 cboTipoPago.DisplayMember = "NomTipo";
                 cboTipoPago.ValueMember = "TipoID";
                 cboTipoPago.SelectedValue = 12;  //por defecto pago Efectivo
@@ -173,10 +173,10 @@ namespace GRTechnology1._0
                     fila["Fecha1"] = deposito.DtFecCobroDep.Value;
                     break;
                 case "16":    //TRANSFERENCIA
-                    fila["Banco1"] = transf.txtBancoOrigen.Text.Trim();
-                    fila["Banco1"] = transf.txtBancoDestino.Text.Trim();
-                    fila["Numero1"] = transf.txtctaOrigen.Text.Trim();
-                    fila["Numero1"] = transf.txtCtaDestino.Text.Trim();
+                    fila["BancoID"] = transf.cboBanco.SelectedValue;
+                    fila["Banco1"] = transf.cboBanco.Text;
+                    fila["Banco2"] = transf.txtBancoDestino.Text.Trim();
+                    fila["Numero2"] = transf.txtCtaDestino.Text.Trim();
                     fila["Fecha1"] = transf.DtFecCobroTransf.Value;
                     break;
             }

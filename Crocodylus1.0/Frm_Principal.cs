@@ -14,6 +14,7 @@ namespace GRTechnology1._0
 {
     public partial class Frm_Principal : Form, ICargaDatosPrin
     {
+        bool sw = true;
 
         #region ICargarDatosPrin
 
@@ -38,6 +39,8 @@ namespace GRTechnology1._0
 
         private void Crocodylus_Load(object sender, EventArgs e)
         {
+            flowLayoutPanelMenuRapido.Width = 93;
+
             //Cargamos la imagen x defecto
             CargarRoles();
             CargarVersionSistema();
@@ -1252,6 +1255,84 @@ namespace GRTechnology1._0
             }
             Frm_Ingresos_EgresosPOS.frmgastingr.Show();
             Frm_Ingresos_EgresosPOS.frmgastingr.BringToFront();
+        }
+
+        private void ptbxVentaPOS_Click(object sender, EventArgs e)
+        {
+            if (Frm_Venta2.frmventa == null)
+            {
+                Frm_Venta2.frmventa = new Frm_Venta2();
+                Frm_Venta2.frmventa.MdiParent = this;
+            }
+            Frm_Venta2.frmventa.WindowState = FormWindowState.Maximized;
+            Frm_Venta2.frmventa.Show();
+            Frm_Venta2.frmventa.BringToFront();
+
+            btnAbrirMenu.PerformClick();
+        }
+
+        private void btnAbrirMenu_Click(object sender, EventArgs e)
+        {
+            if (sw)
+            {
+                flowLayoutPanelMenuRapido.Width = 38;
+                sw = false;
+            }
+            else
+            {
+                flowLayoutPanelMenuRapido.Width = 93;
+                sw = true;
+            }
+
+            //recorremos todos los items en el panel
+            foreach (Control ctrl in flowLayoutPanelMenuRapido.Controls)
+            {
+                if (ctrl == panel5)
+                    continue;
+
+                ctrl.Visible = sw;
+            }
+        }
+
+        private void ptbxGastosPOS_Click(object sender, EventArgs e)
+        {
+            if (Frm_Ingresos_EgresosPOS.frmgastingr == null)
+            {
+                Frm_Ingresos_EgresosPOS.frmgastingr = new Frm_Ingresos_EgresosPOS();
+                Frm_Ingresos_EgresosPOS.frmgastingr.MdiParent = this;
+            }
+            Frm_Ingresos_EgresosPOS.frmgastingr.Show();
+            Frm_Ingresos_EgresosPOS.frmgastingr.BringToFront();
+
+            btnAbrirMenu.PerformClick();
+        }
+
+        private void ptbxListaVentasPOS_Click(object sender, EventArgs e)
+        {
+            if (Frm_Detalle_VentaPOS.detven == null)
+            {
+                Frm_Detalle_VentaPOS.detven = new Frm_Detalle_VentaPOS();
+                Frm_Detalle_VentaPOS.detven.MdiParent = this;
+            }
+            Frm_Detalle_VentaPOS.detven.Show();
+            Frm_Detalle_VentaPOS.detven.WindowState = FormWindowState.Maximized;
+            Frm_Detalle_VentaPOS.detven.BringToFront();
+
+            btnAbrirMenu.PerformClick();
+        }
+
+        private void ptbxAbonosPOS_Click(object sender, EventArgs e)
+        {
+            if (Frm_AbonosPOS.frmaboncli == null)
+            {
+                Frm_AbonosPOS.frmaboncli = new Frm_AbonosPOS(true);
+                Frm_AbonosPOS.frmaboncli.MdiParent = this;
+            }
+
+            Frm_AbonosPOS.frmaboncli.Show();
+            Frm_AbonosPOS.frmaboncli.BringToFront();
+
+            btnAbrirMenu.PerformClick();
         }
 
     }
