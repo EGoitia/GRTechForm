@@ -55,7 +55,6 @@ namespace GRTechnology1._0
                 btnGuardar.Enabled = false;
                 btnCancelar.Enabled = false;
                 btnAct.Enabled = false;
-                btnConfig.Enabled = false;
                 btnBusqCli.Enabled = false;
                 panelProductos.Enabled = false;
                 panelTipoProd.Enabled = false;
@@ -95,7 +94,6 @@ namespace GRTechnology1._0
                 btnGuardar.Enabled = true;
                 btnCancelar.Enabled = true;
                 btnAct.Enabled = true;
-                btnConfig.Enabled = true;
                 btnBusqCli.Enabled = true;
                 panelProductos.Enabled = true;
                 panelTipoProd.Enabled = true;
@@ -663,6 +661,10 @@ namespace GRTechnology1._0
                         ProcTotales();
                     }
                 }
+                else
+                {
+                    MessageBox.Show("El item se encuentra en la lista");
+                }
             }
         }
 
@@ -681,7 +683,7 @@ namespace GRTechnology1._0
             cmbTipoVenta.Text = "CONTADO";
 
             FrmPago = new Frm_PagoPos();
-            FrmRep = new Frm_Reporte();
+            FrmRep = new Frm_Reporte(false);
             FrmSelecProd = new Frm_SelectProductoPOS();
 
             ListarDatos();
@@ -704,13 +706,7 @@ namespace GRTechnology1._0
         {
             Actualizar_Offline();
         }
-
-        private void btnConfig_Click(object sender, EventArgs e)
-        {
-            Frm_ConfigDisplay conf = new Frm_ConfigDisplay();
-            conf.ShowDialog();
-        }
-
+        
         private void dgvPedido_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvPedido.Columns[e.ColumnIndex].Name == "CElim" && e.RowIndex >= 0)

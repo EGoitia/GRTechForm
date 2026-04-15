@@ -15,6 +15,8 @@ namespace GRTechnology1._0
         public string Variable = string.Empty;
         public string Variable2 = string.Empty;
         public string Titulo = string.Empty;
+        
+        private bool Cerrar = true;
 
         private ControlUsuario.CntrlUsuFiltroProductos culistprec = null;
         private ControlUsuario.CntrlUsuFiltroCuentasXCobrar cucuencob = null;
@@ -29,11 +31,12 @@ namespace GRTechnology1._0
         private ControlUsuario.CntrlUsuFiltroMaterialTransito cumattran = null;
         private ControlUsuario.CntrlUsuFiltroStockMinimo custkmin = null;
 
-        public Frm_Reporte(bool mostrarfiltro = false)
+        public Frm_Reporte(bool cerrar = true, bool mostrarfiltro = false)
         {
             InitializeComponent();
 
             panelFiltros.Visible = mostrarfiltro;
+            Cerrar = cerrar;
         }
 
         public void Cargar_Reporte(string opc, string[] param)
@@ -281,7 +284,7 @@ namespace GRTechnology1._0
 
                     // Exportar
                     Reporte.ExportToDisk(ExportFormatType.PortableDocFormat, rutaPdf);
-
+                    
                     // Abrir automáticamente
                     if (abrirAlFinal && File.Exists(rutaPdf))
                     {
@@ -426,7 +429,8 @@ namespace GRTechnology1._0
 
         private void Frm_Reporte_FormClosing(object sender, FormClosingEventArgs e)
         {
-            this.Dispose();
+            if (Cerrar)
+                this.Dispose();
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)

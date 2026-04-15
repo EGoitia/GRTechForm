@@ -34,6 +34,7 @@
             this.migraciónDeDatosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configSistemaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configImpresorasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.configPantallasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripDropDownBtnMantenimiento = new System.Windows.Forms.ToolStripDropDownButton();
             this.empresaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sucursalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -226,7 +227,8 @@
             this.toolStripDropDownBtnOpc.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.migraciónDeDatosToolStripMenuItem,
             this.configSistemaToolStripMenuItem,
-            this.configImpresorasToolStripMenuItem});
+            this.configImpresorasToolStripMenuItem,
+            this.configPantallasToolStripMenuItem});
             this.toolStripDropDownBtnOpc.Image = global::GRTechnology1._0.Properties.Resources.ajustes_con_engranajes;
             this.toolStripDropDownBtnOpc.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownBtnOpc.Name = "toolStripDropDownBtnOpc";
@@ -255,6 +257,13 @@
             this.configImpresorasToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.configImpresorasToolStripMenuItem.Text = "Config. Impresoras";
             this.configImpresorasToolStripMenuItem.Click += new System.EventHandler(this.configImpresorasToolStripMenuItem_Click);
+            // 
+            // configPantallasToolStripMenuItem
+            // 
+            this.configPantallasToolStripMenuItem.Name = "configPantallasToolStripMenuItem";
+            this.configPantallasToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.configPantallasToolStripMenuItem.Text = "Config. Pantallas";
+            this.configPantallasToolStripMenuItem.Click += new System.EventHandler(this.configPantallasToolStripMenuItem_Click);
             // 
             // toolStripDropDownBtnMantenimiento
             // 
@@ -1732,6 +1741,7 @@
         private System.Windows.Forms.PictureBox ptbxGastosPOS;
         private System.Windows.Forms.PictureBox ptbxListaVentasPOS;
         private System.Windows.Forms.PictureBox ptbxAbonosPOS;
+        private System.Windows.Forms.ToolStripMenuItem configPantallasToolStripMenuItem;
     }
 }
 

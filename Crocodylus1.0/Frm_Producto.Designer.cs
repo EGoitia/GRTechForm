@@ -69,6 +69,8 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.gbxDatBas = new System.Windows.Forms.GroupBox();
+            this.txtSKU = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
             this.btnGenCodBarra = new System.Windows.Forms.Button();
             this.txtProdID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -93,8 +95,6 @@
             this.btnGuardar = new System.Windows.Forms.Button();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.gbxClasificacion = new System.Windows.Forms.GroupBox();
-            this.txtSKU = new System.Windows.Forms.TextBox();
-            this.label19 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbxImagen)).BeginInit();
             this.gbxCosto.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NUpDwnPrecVentaMayor)).BeginInit();
@@ -143,6 +143,7 @@
             // 
             // pbxImagen
             // 
+            this.pbxImagen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pbxImagen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pbxImagen.Location = new System.Drawing.Point(755, 114);
             this.pbxImagen.Name = "pbxImagen";
@@ -635,6 +636,24 @@
             this.gbxDatBas.TabIndex = 31;
             this.gbxDatBas.TabStop = false;
             // 
+            // txtSKU
+            // 
+            this.txtSKU.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtSKU.Location = new System.Drawing.Point(399, 16);
+            this.txtSKU.MaxLength = 50;
+            this.txtSKU.Name = "txtSKU";
+            this.txtSKU.Size = new System.Drawing.Size(119, 20);
+            this.txtSKU.TabIndex = 24;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(364, 22);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(32, 13);
+            this.label19.TabIndex = 23;
+            this.label19.Text = "SKU:";
+            // 
             // btnGenCodBarra
             // 
             this.btnGenCodBarra.Location = new System.Drawing.Point(313, 15);
@@ -884,24 +903,6 @@
             this.gbxClasificacion.Size = new System.Drawing.Size(418, 51);
             this.gbxClasificacion.TabIndex = 36;
             this.gbxClasificacion.TabStop = false;
-            // 
-            // txtSKU
-            // 
-            this.txtSKU.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtSKU.Location = new System.Drawing.Point(399, 16);
-            this.txtSKU.MaxLength = 50;
-            this.txtSKU.Name = "txtSKU";
-            this.txtSKU.Size = new System.Drawing.Size(119, 20);
-            this.txtSKU.TabIndex = 24;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(364, 22);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(32, 13);
-            this.label19.TabIndex = 23;
-            this.label19.Text = "SKU:";
             // 
             // Frm_Producto
             // 

@@ -26,7 +26,7 @@ namespace GRTechnology1._0
                 inm.ShowDialog();
             }
         }
-        
+
         public virtual void Modificar(string opc)
         {
             if (dgvDetalle.Rows.Count > 0 && dgvDetalle.CurrentRow.Index > -1)
@@ -37,6 +37,7 @@ namespace GRTechnology1._0
                     if (opc == "Producto")
                     {
                         ID = dgvDetalle["ProductoID", dgvDetalle.CurrentRow.Index].Value.ToString();
+                        
                         if (Frm_Producto.pr == null)
                         {
                             Frm_Producto.pr = new Frm_Producto();
@@ -115,11 +116,11 @@ namespace GRTechnology1._0
 
                 for (int i = 0; i < ConsultaSql.Length; i++)
                 {
-                    rep.Llenar_Tabla(ConsultaSql[i], NomTabla[i]);    
+                    rep.Llenar_Tabla(ConsultaSql[i], NomTabla[i]);
                 }
-                
+
                 rep.Cargar(NomRep, false, mostrarbtnimp, mostrarbtncopiar, mostrarbtnexport, mostrararbol);
-                rep.Show();              
+                rep.Show();
             }
         }
 
@@ -191,16 +192,16 @@ namespace GRTechnology1._0
                     e.RowBounds.Location.Y + 4);
             }
 
-            if (dgvDetalle.Rows.Count > 0 && dgvDetalle.Columns.Contains("Estado")) 
+            if (dgvDetalle.Rows.Count > 0 && dgvDetalle.Columns.Contains("Estado"))
             {
                 DataGridViewRow dgvr = dgvDetalle.Rows[e.RowIndex];
 
                 if (!(bool)dgvr.Cells["Estado"].Value)
                     dgvr.DefaultCellStyle.BackColor = Color.Red;
-            }            
+            }
         }
 
         #endregion
-        
+
     }
 }

@@ -518,7 +518,7 @@ namespace GRTechnology1._0
         private void Frm_Ingresos_EgresosPOS_Load(object sender, EventArgs e)
         {
             panelLeft.Width = 475;
-            FrmRep = new Frm_Reporte();
+            FrmRep = new Frm_Reporte(false);
                        
             ListarDatos();
 

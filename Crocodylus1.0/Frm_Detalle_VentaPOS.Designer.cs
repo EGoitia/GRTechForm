@@ -53,10 +53,10 @@
             this.txtMontoTot = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.gbxBotones = new System.Windows.Forms.GroupBox();
+            this.btnPagar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnDescargar = new System.Windows.Forms.Button();
             this.btnImp = new System.Windows.Forms.Button();
-            this.btnPagar = new System.Windows.Forms.Button();
             this.gbxFiltro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalle)).BeginInit();
             this.gbxTotales.SuspendLayout();
@@ -342,6 +342,20 @@
             this.gbxBotones.TabIndex = 8;
             this.gbxBotones.TabStop = false;
             // 
+            // btnPagar
+            // 
+            this.btnPagar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPagar.BackgroundImage = global::GRTechnology1._0.Properties.Resources.trabajadores_por_cuenta_propia;
+            this.btnPagar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnPagar.Location = new System.Drawing.Point(571, 11);
+            this.btnPagar.Name = "btnPagar";
+            this.btnPagar.Size = new System.Drawing.Size(58, 41);
+            this.btnPagar.TabIndex = 10;
+            this.btnPagar.Tag = "Pagar Saldo";
+            this.btnPagar.UseVisualStyleBackColor = true;
+            this.btnPagar.Visible = false;
+            this.btnPagar.Click += new System.EventHandler(this.btnPagar_Click);
+            // 
             // btnSalir
             // 
             this.btnSalir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -380,19 +394,6 @@
             this.btnImp.Tag = "Imprimir";
             this.btnImp.UseVisualStyleBackColor = true;
             this.btnImp.Click += new System.EventHandler(this.btnImp_Click);
-            // 
-            // btnPagar
-            // 
-            this.btnPagar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPagar.BackgroundImage = global::GRTechnology1._0.Properties.Resources.trabajadores_por_cuenta_propia;
-            this.btnPagar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnPagar.Location = new System.Drawing.Point(571, 11);
-            this.btnPagar.Name = "btnPagar";
-            this.btnPagar.Size = new System.Drawing.Size(58, 41);
-            this.btnPagar.TabIndex = 10;
-            this.btnPagar.Tag = "Pagar Saldo";
-            this.btnPagar.UseVisualStyleBackColor = true;
-            this.btnPagar.Click += new System.EventHandler(this.btnPagar_Click);
             // 
             // Frm_Detalle_VentaPOS
             // 

@@ -21,6 +21,8 @@ namespace GRTechnology1._0
         private bool Cargado = false;
         private decimal TC = 6.96m;
 
+        Frm_Reporte rep;
+
         CntrUsuCheque cheque = null;
         CntrUsuDeposito deposito = null;
         CntrUsuTarjetas tarjeta = null;
@@ -88,7 +90,6 @@ namespace GRTechnology1._0
         {
             try
             {
-                Frm_Reporte rep = new Frm_Reporte();
                 rep.Titulo = (AbonoCli ? "RECIBO" : "NOTA DE PAGO");
                 rep.Llenar_Tabla("SELECT * FROM Vista_Abonos WHERE CodAbono='" + abonoid + "'", "Lista_Abonos");
                 rep.Llenar_Tabla("SELECT * FROM Vista_Detalle_Abonos WHERE CodAbono='" + abonoid + "'", "Detalle_Abonos");
@@ -531,6 +532,8 @@ namespace GRTechnology1._0
 
         private void Frm_AbonosPOS_Load(object sender, EventArgs e)
         {
+            rep = new Frm_Reporte(false);
+
             txtFoco = txtMonto;
             Listar_TipoPago();
             Listar_Cajas();

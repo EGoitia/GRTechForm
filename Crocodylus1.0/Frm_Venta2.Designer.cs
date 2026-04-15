@@ -37,7 +37,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel4 = new System.Windows.Forms.Panel();
             this.gbxBotones = new System.Windows.Forms.GroupBox();
-            this.btnConfig = new System.Windows.Forms.Button();
             this.cmbTipoVenta = new System.Windows.Forms.ComboBox();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
@@ -93,7 +92,6 @@
             // 
             this.gbxBotones.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gbxBotones.Controls.Add(this.btnConfig);
             this.gbxBotones.Controls.Add(this.cmbTipoVenta);
             this.gbxBotones.Controls.Add(this.btnGuardar);
             this.gbxBotones.Controls.Add(this.btnCancelar);
@@ -106,19 +104,6 @@
             this.gbxBotones.TabIndex = 6;
             this.gbxBotones.TabStop = false;
             // 
-            // btnConfig
-            // 
-            this.btnConfig.BackColor = System.Drawing.SystemColors.Window;
-            this.btnConfig.BackgroundImage = global::GRTechnology1._0.Properties.Resources.ajustes_con_engranajes;
-            this.btnConfig.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnConfig.Location = new System.Drawing.Point(8, 21);
-            this.btnConfig.Name = "btnConfig";
-            this.btnConfig.Size = new System.Drawing.Size(46, 45);
-            this.btnConfig.TabIndex = 9;
-            this.btnConfig.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnConfig.UseVisualStyleBackColor = false;
-            this.btnConfig.Click += new System.EventHandler(this.btnConfig_Click);
-            // 
             // cmbTipoVenta
             // 
             this.cmbTipoVenta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -128,7 +113,7 @@
             this.cmbTipoVenta.Items.AddRange(new object[] {
             "CONTADO",
             "CRÉDITO"});
-            this.cmbTipoVenta.Location = new System.Drawing.Point(59, 21);
+            this.cmbTipoVenta.Location = new System.Drawing.Point(11, 22);
             this.cmbTipoVenta.Name = "cmbTipoVenta";
             this.cmbTipoVenta.Size = new System.Drawing.Size(228, 45);
             this.cmbTipoVenta.TabIndex = 20;
@@ -570,7 +555,6 @@
         private System.Windows.Forms.Button btnAbrirMenu;
         private System.Windows.Forms.FlowLayoutPanel panelProductos;
         private System.Windows.Forms.Panel panelTipoProd;
-        private System.Windows.Forms.Button btnConfig;
         private System.Windows.Forms.FlowLayoutPanel PanelVendedores;
         private System.Windows.Forms.Button btnBusqCli;
         private System.Windows.Forms.ComboBox cmbTipoVenta;

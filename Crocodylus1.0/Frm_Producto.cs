@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using Objetos;
 using Datos;
 using System.IO;
+using System.Drawing;
 
 namespace GRTechnology1._0
 {
@@ -12,7 +13,7 @@ namespace GRTechnology1._0
         OpcionFormularios op = new OpcionFormularios();
         public static Frm_Producto pr = null;
         public int ProductoID = -1;
-        
+
         private byte[] Imagen;
 
         public Frm_Producto()
@@ -26,16 +27,54 @@ namespace GRTechnology1._0
             {
                 openFileDialog.Title = "Seleccione un Documento";
                 openFileDialog.FileName = "";
-                openFileDialog.Filter = "JPG|*.jpg||*.jpg";
+                openFileDialog.Filter = "Archivos de Imagen|*.jpg;*.jpeg;*.png;*.bmp|" +
+                                 "JPG (*.jpg)|*.jpg|" +
+                                 "JPEG (*.jpeg)|*.jpeg|" +
+                                 "PNG (*.png)|*.png|" +
+                                 "BMP (*.bmp)|*.bmp|" +
+                                 "Todos los archivos (*.*)|*.*";
                 openFileDialog.ShowDialog();
 
                 if (openFileDialog.FileName != "")
-                    pbxImagen.Image = new System.Drawing.Bitmap(openFileDialog.FileName);
+                {
+                    string ext = Path.GetExtension(openFileDialog.FileName).ToLower();
+
+                    if (ext != ".jpg" && ext != ".jpeg" && ext != ".png" && ext != ".bmp")
+                    {
+                        MessageBox.Show("Formato no permitido");
+                        return;
+                    }
+
+                    // Validar tamaño
+                    FileInfo fi = new FileInfo(openFileDialog.FileName);
+                    if (fi.Length > 5 * 1024 * 1024)
+                    {
+                        MessageBox.Show("Imagen demasiado grande (máx 5MB)");
+                        return;
+                    }
+
+                    // Validar contenido real
+                    try
+                    {
+                        using (var fs = new FileStream(openFileDialog.FileName, FileMode.Open, FileAccess.Read))
+                        using (var img = Image.FromStream(fs))
+                        {
+                            pbxImagen.BackgroundImage = new Bitmap(img);
+                        }
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Archivo inválido o corrupto");
+                    }
+
+                    //pbxImagen.BackgroundImage = new System.Drawing.Bitmap(openFileDialog.FileName);
+                }
+                    
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                pbxImagen.Image = null;
+                pbxImagen.BackgroundImage = Properties.Resources.sinimagen;
             }
         }
 
@@ -53,7 +92,7 @@ namespace GRTechnology1._0
                 MessageBox.Show("SELECCIONE UN GRUPO", "GRUPO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return false;
             }
-            else if(cboSubRubro.SelectedValue.ToString() == "-1")
+            else if (cboSubRubro.SelectedValue.ToString() == "-1")
             {
                 cboSubRubro.Focus();
                 MessageBox.Show("SELECCIONE UN SUBGRUPO", "SUBGRUPO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -128,7 +167,7 @@ namespace GRTechnology1._0
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }        
+            }
         }
 
         private void Listar_Tipo_Unidad()
@@ -188,6 +227,30 @@ namespace GRTechnology1._0
                 NUpDwnPrecCosto.Value = Convert.ToDecimal(ProdDT.Rows[0]["PCostoEmp"]);
                 NUpDwnPrecVentMenor.Value = Convert.ToDecimal(ProdDT.Rows[0]["PVentaMenorEmp"]);
                 NUpDwnPrecVentaMayor.Value = Convert.ToDecimal(ProdDT.Rows[0]["PVentaMayorEmp"]);
+
+                DataTable ImgDT = DListarPersonalizado.ConsultarDT("SELECT * FROM Imagen WHERE CodImagen='" + ProdDT.Rows[0]["CodImagen"] + "'" +
+                                                                   "AND Principal=1");
+                if (ImgDT.Rows.Count > 0 && ImgDT.Rows[0]["Img"] != DBNull.Value)
+                {
+                    try
+                    {
+                        byte[] imgBytes = (byte[])ImgDT.Rows[0]["Img"];
+
+                        using (MemoryStream ms = new MemoryStream(imgBytes))
+                        using (Image img = Image.FromStream(ms))
+                        {
+                            pbxImagen.BackgroundImage = new Bitmap(img); // desacoplado del stream
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        pbxImagen.BackgroundImage = Properties.Resources.sinimagen;
+                    }
+                }
+                else
+                {
+                    pbxImagen.BackgroundImage = Properties.Resources.sinimagen; // imagen por defecto
+                }
             }
         }
 
@@ -225,19 +288,19 @@ namespace GRTechnology1._0
                 prod.Serial = chkConSerial.Checked;
                 prod.Comodin = chkComodin.Checked;
 
-                if (pbxImagen.Image != null)
+                if (pbxImagen.BackgroundImage != null)
                 {
                     try
                     {
                         //Cargamos la Imagen
                         MemoryStream m_MemoryStream = new MemoryStream();
-                        pbxImagen.Image.Save(m_MemoryStream, System.Drawing.Imaging.ImageFormat.Jpeg);
+                        pbxImagen.BackgroundImage.Save(m_MemoryStream, System.Drawing.Imaging.ImageFormat.Jpeg);
                         Imagen = m_MemoryStream.ToArray();
                         prod.Img = Imagen;
                     }
                     catch (Exception ex)
                     {
-                        DialogResult dialogo = MessageBox.Show("ERROR: " + ex.Message + " ; ¿DESEA DE TODAS MANERAS GUARDAR LA INFORMACION DEL PRODUCTO CON UNA IMAGEN EN BLANCO?",
+                        DialogResult dialogo = MessageBox.Show("ERROR: " + ex.Message + " ; ¿DESEA DE TODAS MANERAS GUARDAR LA INFORMACION DEL PRODUCTO SIN UNA IMAGEN?",
                             "ERROR", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
                         if (dialogo == DialogResult.No)
                             return;
@@ -290,7 +353,7 @@ namespace GRTechnology1._0
             NUpDwnStockMax.Value = NUpDwnStockMax.Minimum;
             NUpDwnStockMin.Value = NUpDwnStockMin.Minimum;
             NUpDwnValCom.Value = NUpDwnValCom.Minimum;
-            pbxImagen.Image = null;
+            pbxImagen.BackgroundImage = Properties.Resources.sinimagen; ;
         }
 
         private void Frm_Producto_Load(object sender, EventArgs e)
@@ -303,7 +366,7 @@ namespace GRTechnology1._0
             Listar_Tipo_Unidad();
 
             if (ProductoID > -1)
-                Listar_Producto();    
+                Listar_Producto();
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -329,7 +392,7 @@ namespace GRTechnology1._0
             Frm_Tipo marc = new Frm_Tipo("Marca");
             marc.ShowDialog();
             Listar_Marca();
-            cboMarca.SelectedValue = marc.ID;            
+            cboMarca.SelectedValue = marc.ID;
             marc.Dispose();
         }
 
@@ -356,7 +419,7 @@ namespace GRTechnology1._0
 
         private void lblBorrarImg_Click(object sender, EventArgs e)
         {
-            pbxImagen.Image = null;
+            pbxImagen.BackgroundImage = null;
         }
 
         private void btnGenCodBarra_Click(object sender, EventArgs e)

@@ -276,6 +276,9 @@ namespace GRTechnology1._0
 
         private void btnDescargar_Click(object sender, EventArgs e)
         {
+            if (dgvDetalle.Rows.Count == 0)
+                return;
+
             Frm_Reporte rep = new Frm_Reporte();
             rep.Dts.Clear();
             rep.Llenar_Tabla("SELECT * FROM Vista_Ventas WHERE CodVenta='" + dgvDetalle["CodVenta", dgvDetalle.CurrentRow.Index].Value.ToString() + "'", "Lista_Venta");
@@ -315,6 +318,9 @@ namespace GRTechnology1._0
 
         private void btnPagar_Click(object sender, EventArgs e)
         {
+            if (dgvDetalle.Rows.Count == 0)
+                return;
+
             try
             {
                 //verificamos is la venta tiene saldo

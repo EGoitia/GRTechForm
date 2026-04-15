@@ -1335,5 +1335,11 @@ namespace GRTechnology1._0
             btnAbrirMenu.PerformClick();
         }
 
+        private void configPantallasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_ConfigDisplay conf = new Frm_ConfigDisplay();
+            conf.ShowDialog();
+        }
+
     }
 }
